@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Master
                             </a>
                             <ul class="dropdown-menu">
@@ -43,10 +43,10 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Positions</a>
+                                    <a class="nav-link" href="{{ url('admin/position/list')}}">Positions</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Duty</a>
+                                    <a class="nav-link" href="{{ url('admin/duty/list')}}">Duty</a>
                                 </li>
                             
                             </ul>

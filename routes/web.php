@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DutyController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +30,24 @@ Route::get('/admin/township/del/{id}', [App\Http\Controllers\TownshipController:
 Route::get('/admin/township/upd/{id}', [App\Http\Controllers\TownshipController::class, 'updTownship'])->middleware('auth');
 Route::post('/admin/township/upd/{id}', [App\Http\Controllers\TownshipController::class, 'updateTownship'])->middleware('auth');
 //Township
+
+//Duty
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/duty/list', [App\Http\Controllers\DutyController::class, 'listDuty']);
+    Route::post('/admin/duty/add', [App\Http\Controllers\DutyController::class, 'createDuty']);
+    Route::get('/admin/duty/del/{id}', [App\Http\Controllers\DutyController::class, 'deleteDuty']);
+    Route::get('/admin/duty/upd/{id}', [App\Http\Controllers\DutyController::class, 'updDuty']);
+    Route::post('/admin/duty/upd/{id}', [App\Http\Controllers\DutyController::class, 'updateDuty']);
+});
+//
+
+//Position
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/position/list', [App\Http\Controllers\PositionController::class, 'listPosition']);
+    Route::post('/admin/position/add', [App\Http\Controllers\PositionController::class, 'createPosition']);
+    Route::get('/admin/position/del/{id}', [App\Http\Controllers\PositionController::class, 'deletePosition']);
+    Route::get('/admin/position/upd/{id}', [App\Http\Controllers\PositionController::class, 'updPosition']);
+    Route::post('/admin/position/upd/{id}', [App\Http\Controllers\PositionController::class, 'updatePosition']);
+});
+//
+
