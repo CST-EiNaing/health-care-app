@@ -28,12 +28,34 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    @if(Auth::check())
+                    @if(Auth::user()->id==1 || Auth::user()->id==2 )
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Master
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="nav-link" href="{{ url('admin/township/list') }}">Townships</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Positions</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Duty</a>
+                                </li>
+                            
+                            </ul>
+                        </li>
+                        @endif
+                        @endif
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                    <!-- Right Side Of Navbar -->       
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
