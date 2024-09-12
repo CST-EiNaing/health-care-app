@@ -40,9 +40,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Position::factory()->hca()->create();
         \App\Models\Position::factory()->amw()->create();
         \App\Models\Position::factory()->cgv()->create();
-        \App\Models\Position::factory()->spl()->create();
-
-        //owner
-        \App\Models\Owner::factory()->ownerOne()->create();
+        \App\Models\Position::factory()->spl()->create(); 
     }
 }

@@ -27,7 +27,7 @@ class DutyController extends Controller
             ]
         );
         if ($validator->fails()) {
-            return back()->with('info', "Please Enter the Data!");
+            return back()->with('info_danger', "Please Enter the Data!");
         }
 
         $duty = new Duty();
@@ -40,7 +40,7 @@ class DutyController extends Controller
         $duty->save();
 
 
-        return back()->with('info', 'New Duty added Successfully!');
+        return back()->with('info_success', 'New Duty added Successfully!');
     }
 
     public function deleteDuty()
@@ -50,7 +50,7 @@ class DutyController extends Controller
  
         Duty::find($id)->delete();
  
-        return redirect('/admin/duty/list')->with('info','Duty Deleted Successfully!');
+        return redirect('/admin/duty/list')->with('info_danger','Duty Deleted Successfully!');
     }
 
     public function updDuty()
@@ -70,7 +70,7 @@ class DutyController extends Controller
            ]);
            if($validator-> fails())
            {
-               return back()->with('info',"Please Enter the Data!");
+               return back()->with('info_danger',"Please Enter the Data!");
            }
  
  
@@ -80,6 +80,6 @@ class DutyController extends Controller
             $duty->fee = request()->fee;
            
            $duty->save();
-           return redirect('/admin/duty/list')->with('info','Duty Updated Successfully!');
+           return redirect('/admin/duty/list')->with('info_success','Duty Updated Successfully!');
     }
 }

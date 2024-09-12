@@ -3,11 +3,16 @@
 
 <div class="container-fluid">
 	<div class="row justify-content-center">
-		@if(session('info'))
-		<div class="alert alert-danger">
-			{{session('info')}}
-		</div>
-		@endif
+		@if (session('info_success'))
+                <div class="alert alert-success">
+                    {{ session('info_success') }}
+                </div>
+            @endif
+            @if (session('info_danger'))
+                <div class="alert alert-danger">
+                    {{ session('info_danger') }}
+                </div>
+            @endif
 		<div class="col-md-4">
 			<div class="card ">
 				<div class="card-header"  style="font-weight:bold;">

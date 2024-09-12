@@ -25,7 +25,7 @@ class TownshipController extends Controller
    		]);
    	if($validator-> fails())
    	{
-   		return back()->with('info',"Please Enter the Data!");
+   		return back()->with('info_danger',"Please Enter the Data!");
    	}
 
    	$township = new Township();
@@ -35,7 +35,7 @@ class TownshipController extends Controller
    	$township->save();
 
 
-   	return back()->with('info','New Township added Successfully!');
+   	return back()->with('info_success','New Township added Successfully!');
    }
 
    public function deleteTownship()
@@ -45,7 +45,7 @@ class TownshipController extends Controller
 
    	Township::find($id)->delete();
 
-   	return redirect('/admin/township/list')->with('info','Township Deleted Successfully!');
+   	return redirect('/admin/township/list')->with('info_danger','Township Deleted Successfully!');
    }
 
    public function updTownship()
@@ -64,7 +64,7 @@ class TownshipController extends Controller
           ]);
           if($validator-> fails())
           {
-              return back()->with('info',"Please Enter the Data!");
+              return back()->with('info_danger',"Please Enter the Data!");
           }
 
 
@@ -73,7 +73,7 @@ class TownshipController extends Controller
            $township->name        = request()->name;
           
           $township->save();
-          return redirect('/admin/township/list')->with('info','Township Updated Successfully!');
+          return redirect('/admin/township/list')->with('info_success','Township Updated Successfully!');
    }
 
 
