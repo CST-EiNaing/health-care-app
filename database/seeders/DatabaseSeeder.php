@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
 
         //Township
         \App\Models\Township::factory()->create([
-            'name' => 'Yangon',   
+            'name' => 'Yangon',
         ]);
 
         \App\Models\Township::factory()->create([
-            'name' => 'Mandalay',  
+            'name' => 'Mandalay',
         ]);
         //Township
 
@@ -41,7 +41,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\Position::factory()->amw()->create();
         \App\Models\Position::factory()->cgv()->create();
         \App\Models\Position::factory()->spl()->create();
-        //
 
+        //owner
+        \App\Models\Owner::factory()->ownerOne()->create();
     }
 }

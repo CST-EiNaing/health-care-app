@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DutyController;
+use App\Http\Controllers\OwnerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,5 +50,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/position/upd/{id}', [App\Http\Controllers\PositionController::class, 'updPosition']);
     Route::post('/admin/position/upd/{id}', [App\Http\Controllers\PositionController::class, 'updatePosition']);
 });
-//
-
+//Owner
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/owner/list', [OwnerController::class, 'listOwner']);
+    Route::post('admin/owner/add', [OwnerController::class, 'createOwner']);
+    Route::get('admin/owner/del/{id}', [OwnerController::class, 'deleteOwner']);
+    Route::get('admin/owner/upd/{id}', [OwnerController::class, 'updOwner']);
+    Route::post('admin/owner/update/{id}', [OwnerController::class, 'updateOwner']);
+});
