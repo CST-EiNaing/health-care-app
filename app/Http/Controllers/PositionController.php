@@ -27,7 +27,7 @@ class PositionController extends Controller
             ]
         );
         if ($validator->fails()) {
-            return back()->with('info', "Please Enter the Data!");
+            return back()->with('info_danger', "Please Enter the Data!");
         }
 
         $positon = new Position();
@@ -40,7 +40,7 @@ class PositionController extends Controller
         $positon->save();
 
 
-        return back()->with('info', 'New Positon added Successfully!');
+        return back()->with('info_success', 'New Positon added Successfully!');
     }
 
     public function deletePosition()
@@ -50,7 +50,7 @@ class PositionController extends Controller
  
         Position::find($id)->delete();
  
-        return redirect('/admin/position/list')->with('info','Position Deleted Successfully!');
+        return redirect('/admin/position/list')->with('info_danger','Position Deleted Successfully!');
     }
 
     public function updPosition()
@@ -70,7 +70,7 @@ class PositionController extends Controller
            ]);
            if($validator-> fails())
            {
-               return back()->with('info',"Please Enter the Data!");
+               return back()->with('info_danger',"Please Enter the Data!");
            }
  
  
@@ -80,6 +80,6 @@ class PositionController extends Controller
             $position->description = request()->description;
            
            $position->save();
-           return redirect('/admin/position/list')->with('info','Position Updated Successfully!');
+           return redirect('/admin/position/list')->with('info_success','Position Updated Successfully!');
     }
 }

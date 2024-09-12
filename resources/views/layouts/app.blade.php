@@ -58,7 +58,7 @@
                                 </li>
                                 <li>
                                     <a class="nav-link" href="{{ url('/admin/owner/list') }}">
-                                        Owner
+                                        Booking
                                     </a>
                                 </li>
                         @endif
