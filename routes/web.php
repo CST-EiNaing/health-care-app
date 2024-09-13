@@ -51,3 +51,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/position/upd/{id}', [App\Http\Controllers\PositionController::class, 'updatePosition']);
 });
 //
+//Owner
+Route::get('/admin/owner/list', [App\Http\Controllers\OwnersController::class, 'listOwner'])->middleware('auth');
+Route::post('/admin/owner/add', [App\Http\Controllers\OwnersController::class, 'createOwner'])->middleware('auth');
+Route::get('/admin/owner/del/{id}', [App\Http\Controllers\OwnersController::class, 'deleteOwner'])->middleware('auth');
+Route::get('/admin/owner/upd/{id}', [App\Http\Controllers\OwnersController::class, 'updOwner'])->middleware('auth');
+Route::post('/admin/owner/upd/{id}', [App\Http\Controllers\OwnersController::class, 'updateOwner'])->middleware('auth');
+//Owner
+
+//Patient
+Route::get('/admin/patient/list', [App\Http\Controllers\PatientController::class, 'listPatient'])->middleware('auth');
+Route::post('/admin/patient/add', [App\Http\Controllers\PatientController::class, 'createPatient'])->middleware('auth');
+Route::get('/admin/patient/del/{id}', [App\Http\Controllers\PatientController::class, 'deletePatient'])->middleware('auth');
+Route::get('/admin/patient/upd/{id}', [App\Http\Controllers\PatientController::class, 'updPatient'])->middleware('auth');
+Route::post('/admin/patient/upd/{id}', [App\Http\Controllers\PatientController::class, 'updatePatient'])->middleware('auth');
+//Patient
