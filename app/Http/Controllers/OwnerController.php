@@ -26,7 +26,6 @@ class OwnerController extends Controller
                 'patient_relative' => "required",
                 'phone' => "required",
                 'address' => "required",
-                'status' => "required",
             ]
         );
         if ($validator->fails()) {
@@ -75,8 +74,6 @@ class OwnerController extends Controller
                 'patient_relative' => "required",
                 'phone' => "required",
                 'address' => "required",
-                'status' => "required",
-
             ]
         );
         if ($validator->fails()) {

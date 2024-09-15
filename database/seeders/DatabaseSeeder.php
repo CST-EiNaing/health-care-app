@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Ndp;
 use App\Models\Nurse;
 use App\Models\Owner;
+use App\Models\Patient;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -50,6 +51,9 @@ class DatabaseSeeder extends Seeder
 
         //Owner
         Owner::factory()->count(3)->create();
+
+        //Patient
+        Patient::factory()->count(4)->create();
 
         //Nurse
         Nurse::factory()->count(7)->create();

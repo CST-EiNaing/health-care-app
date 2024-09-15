@@ -62,6 +62,16 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a class="nav-link" href="{{ url('/admin/patient/list') }}">
+                                        Patient
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ url('/admin/owner/list') }}">
+                                        Owner
+                                    </a>
+                                </li>
+                                <li>
                                     <a class="nav-link" href="{{ url('/admin/ndp/list') }}">
                                         NDP
                                     </a>
