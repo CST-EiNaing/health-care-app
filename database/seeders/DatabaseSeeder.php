@@ -56,5 +56,8 @@ class DatabaseSeeder extends Seeder
 
         //NDP
         Ndp::factory()->count(8)->create();
+
+        //Payment Method
+        $this->call(PaymentMethodSeeder::class);
     }
 }

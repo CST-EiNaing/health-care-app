@@ -94,7 +94,11 @@
 							<td>{{ $method->id }}</td>
 							<td>{{ $method->name }}</td>	
 							<td>
-								<img width="50px" height="50px" src="{{ asset('images/payment_method/' .$method->qr_photo)}}" >
+							@if($method->qr_photo)
+								<img width="50px" height="50px" src="{{ asset('images/payment_method/' . $method->qr_photo) }}" alt="QR Code">
+							@else
+							 <span></span>
+							@endif
 							</td>					
 							<td>{{ $method->account_number }}</td>					
 							<td>{{ $method->status }}</td>					
