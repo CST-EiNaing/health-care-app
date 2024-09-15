@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Owner;
 
-class OwnersController extends Controller
+class OwnerController extends Controller
 {
     public function listOwner()
     {

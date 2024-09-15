@@ -71,6 +71,11 @@
                                         Booking
                                     </a>
                                 </li>
+                                <li>
+                                    <a class="nav-link" href="{{ url('/admin/method/list') }}">
+                                        Method
+                                    </a>
+                                </li>
                         @endif
                     @endif
                     </ul>

@@ -55,11 +55,11 @@ Route::middleware('auth')->group(function () {
 });
 //
 //Owner
-Route::get('/admin/owner/list', [App\Http\Controllers\OwnersController::class, 'listOwner'])->middleware('auth');
-Route::post('/admin/owner/add', [App\Http\Controllers\OwnersController::class, 'createOwner'])->middleware('auth');
-Route::get('/admin/owner/del/{id}', [App\Http\Controllers\OwnersController::class, 'deleteOwner'])->middleware('auth');
-Route::get('/admin/owner/upd/{id}', [App\Http\Controllers\OwnersController::class, 'updOwner'])->middleware('auth');
-Route::post('/admin/owner/upd/{id}', [App\Http\Controllers\OwnersController::class, 'updateOwner'])->middleware('auth');
+Route::get('/admin/owner/list', [App\Http\Controllers\OwnerController::class, 'listOwner'])->middleware('auth');
+Route::post('/admin/owner/add', [App\Http\Controllers\OwnerController::class, 'createOwner'])->middleware('auth');
+Route::get('/admin/owner/del/{id}', [App\Http\Controllers\OwnerController::class, 'deleteOwner'])->middleware('auth');
+Route::get('/admin/owner/upd/{id}', [App\Http\Controllers\OwnerController::class, 'updOwner'])->middleware('auth');
+Route::post('/admin/owner/upd/{id}', [App\Http\Controllers\OwnerController::class, 'updateOwner'])->middleware('auth');
 //Owner
 
 //Patient
@@ -98,4 +98,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/booking/upd/{id}', [BookingController::class, 'updBooking']);
     Route::post('/admin/booking/upd/{id}', [BookingController::class, 'updateBooking']);
 });
-//
+
+//Method
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/method/list', [App\Http\Controllers\PaymentMethodController::class, 'listMethod']);
+    Route::post('/admin/method/add', [App\Http\Controllers\PaymentMethodController::class, 'createMethod']);
+    Route::get('/admin/method/del/{id}', [App\Http\Controllers\PaymentMethodController::class, 'deleteMethod']);
+    Route::get('/admin/method/upd/{id}', [App\Http\Controllers\PaymentMethodController::class, 'updMethod']);
+    Route::post('/admin/method/upd/{id}', [App\Http\Controllers\PaymentMethodController::class, 'updateMethod']);
+});
