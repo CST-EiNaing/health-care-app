@@ -68,7 +68,21 @@ class NurseController extends Controller
         $nurse->weight = request()->weight;
         $nurse->academic = request()->academic;
         $nurse->certificate = request()->certificate;
-        $nurse->photo = request()->photo;
+        if($request->hasfile('photo'))
+            {
+                $file        = $request->file('photo');
+                $name        = $file->getClientOriginalName();
+                $extension   = $file->getClientOriginalExtension();
+
+                $file->move('images/nurses',$name);
+
+                $nurse->photo = $name;
+
+            }
+            else
+            {
+                $nurse->photo = '';
+            }
         $nurse->phone = request()->phone;
         $nurse->address = request()->address;
         $nurse->member_code = request()->member_code;
@@ -158,7 +172,7 @@ class NurseController extends Controller
                 $name        = $file->getClientOriginalName();
                 $extension   = $file->getClientOriginalExtension();
 
-                $file->move('images/',$name);
+                $file->move('images/nurses',$name);
 
                 $nurse->photo = $name;
 
