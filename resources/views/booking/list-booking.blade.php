@@ -15,19 +15,35 @@
             <div class="col-md-4">
                 <div class="card ">
                     <div class="card-header" style="font-weight:bold;">
-                        Add New Township
+                        Add New Booking
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('/admin/township/add') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('/admin/booking/add') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <table class="table table-sm">
                                 <tr>
+                                    <td><label class="form-control">Owner's Name:</label></td>
                                     <td>
-                                        <label class="form-control">Township Name</label>
+                                        <select name="nurse_id" class="form-control">
+                                            @foreach($nurses as $nurse)
+                                            <option value="{{$nurse->id}}">
+                                                {{$nurse->name}}
+                                            </option>
+                                            @endforeach;
+                                        </select>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td><label class=" form-control">Duty:</label></td>
                                     <td>
-                                        <input type="text" name="name" class="form-control">
+                                        <select name="duty_id" class=" form-control" id="">
+                                            @foreach($duties as $duty)
+                                            <option value="{{$duty->id}}">
+                                                {{$duty->name}}
+                                            </option>
+                                            @endforeach;
+                                        </select>
                                     </td>
                                 </tr>
 
