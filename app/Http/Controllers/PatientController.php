@@ -4,14 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Patient;
+use App\Models\Owner;
+use App\Models\Township;
 
 class PatientController extends Controller
 {
     public function listPatient()
     {
-        $patients = Patient::all();
+        if(request()->owner_id)
+        {
+             $owner_id  = request()->owner_id;             
+        }
+        else
+        {
+            $owner_id = 1;           
+        }
 
+		if(request()->township_id)
+        {
+             $township_id  = request()->township_id;             
+        }
+        else
+        {
+            $township_id = 1;           
+        }
+        
+        $patients       = Patient::all();
+        $owners         = Owner::all();
+        $townships      = Township::all();
+       
         return view('patient.list-patient', [
+            'owners'   => $owners,
+            'townships'   => $townships,
             'patients' => $patients
         ]);
     }
@@ -35,8 +59,9 @@ class PatientController extends Controller
         }
 
         $patient = new Patient();
-
-        $patient->owner_id = request()->name;
+        // $owners = new Owner();
+        // $townships = new Township();
+        $patient->owner_id = request()->owner_id;
         $patient->township_id = request()->township_id;
         $patient->name = request()->name;
         $patient->age = request()->age;
@@ -63,12 +88,16 @@ class PatientController extends Controller
     }
     public function updPatient()
     {
+        
         $id = request()->id;
         $patient = Patient::find($id);
-        return view('patient.upd-patient', ['patient' => $patient]);
+        return view('patient.upd-patient', [
+            'patient' => $patient,
+        ]);
     }
     public function updatePatient(Request $request)
     {
+        
         $validator = validator(
             request()->all(),
             [
@@ -89,8 +118,7 @@ class PatientController extends Controller
 
 
         $patient = Patient::find(request()->id);
-
-        $patient->owner_id = request()->name;
+        $patient->owner_id = request()->owner_id;
         $patient->township_id = request()->township_id;
         $patient->name = request()->name;
         $patient->age = request()->age;

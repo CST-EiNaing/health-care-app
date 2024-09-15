@@ -11,6 +11,9 @@ class NdpFactory extends Factory
      *
      * @return array
      */
+    protected static $dutyCounter = 0;
+    protected static $positionCounter = 0;
+    protected static $descriptionCounter = 0;
     public function definition()
     {
         $data = [
@@ -25,12 +28,24 @@ class NdpFactory extends Factory
         ];
 
         // Randomly pick one of the predefined sets
-        $chosen = $this->faker->randomElement($data);
+        $chosen = $data[self::$descriptionCounter % count($data)];
+        self::$descriptionCounter++;
+
+        // Generate duty_id pattern: 1,1,1,1,2,2,2,2
+        $dutyId = floor(self::$dutyCounter / 4) + 1; // Divide by 4 to get four 1's, then four 2's
+        if ($dutyId > 2) {
+            $dutyId = 2; // Ensure that after 2 it stays as 2
+        }
+        self::$dutyCounter++;  // Increment duty counter
+
+        // Get the current index for position_id (cycle between 1 and 4)
+        $positionId = self::$positionCounter % 4 + 1;
+        self::$positionCounter++;  // Increment position counter
 
         return [
             'nurse_id'    => 1,
-            'duty_id'     => $this->faker->numberBetween(1, 2),
-            'position_id' => $this->faker->numberBetween(1, 4),
+            'duty_id'     => $dutyId, // Use the duty_id in 1,1,1,1,2,2,2,2 pattern
+            'position_id' => $positionId,
             'description' => $chosen['description'],
             'fee'         => $chosen['fee'],
         ];

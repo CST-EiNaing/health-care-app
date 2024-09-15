@@ -25,12 +25,95 @@
                             <table class="table table-sm">
 
                                 <tr>
+                                    <td><label class="form-control">Owner's Name:</label></td>
                                     <td>
-                                        <label class="form-control">Name</label>
+                                        <select name="nurse_id" class="form-control">
+                                            @foreach($nurses as $nurse)
+                                            <option value="{{$nurse->id}}" @if ($nurse->id == $booking->nurse_id) selected @endif>
+                                                {{$nurse->name}}
+                                            </option>
+                                            @endforeach;
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class=" form-control">Patient:</label></td>
+                                    <td>
+                                        <select name="patient_id" class=" form-control" id="">
+                                            @foreach($patients as $patient)
+                                            <option value="{{$patient->id}}" @if ($patient->id == $booking->patient_id) selected @endif>
+                                                {{$patient->name}}
+                                            </option>
+                                            @endforeach;
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label class=" form-control">NDP:</label></td>
+                                    <td>
+                                        <select name="duty_id" class=" form-control" id="">
+                                            @foreach($ndps as $ndp)
+                                            <option value="{{$ndp->id}}" @if ($ndp->id == $booking->ndp_id) selected @endif>
+                                                {{$ndp->name}}
+                                            </option>
+                                            @endforeach;
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="form-control">From Date</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="name" class="form-control"
-                                            value="{{ $township->name }}">
+                                        <input type="date" name="from_date" value="{{$booking->from_date}}" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="form-control">To Date</label>
+                                    </td>
+                                    <td>
+                                        <input type="date" name="to_date" value="{{$booking->to_date}}" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="form-control">Service Fee</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="service_fee" value="{{$booking->service_fee}}" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="form-control">Nurse Fee</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="nurse_fee" value="{{$booking->nurse_fee}}" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="form-control">Total</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="total" value="{{$booking->total}}" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="form-control">Nurse Profit</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="nurse_profit" value="{{$booking->nurse_profit}}" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="form-control">Company's Total Income</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="company_total" value="{{$booking->company_total}}" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
