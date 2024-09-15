@@ -57,7 +57,17 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="{{ url('/admin/owner/list') }}">
+                                    <a class="nav-link" href="{{ url('/admin/nurse/list') }}">
+                                        Nurse
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ url('/admin/ndp/list') }}">
+                                        NDP
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="{{ url('/admin/booking/list') }}">
                                         Booking
                                     </a>
                                 </li>

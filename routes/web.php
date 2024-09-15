@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DutyController;
-use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\NdpController;
+use App\Http\Controllers\NurseController;
+use App\Http\Controllers\PositionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,21 +37,21 @@ Route::post('/admin/township/upd/{id}', [App\Http\Controllers\TownshipController
 
 //Duty
 Route::middleware('auth')->group(function () {
-    Route::get('/admin/duty/list', [App\Http\Controllers\DutyController::class, 'listDuty']);
-    Route::post('/admin/duty/add', [App\Http\Controllers\DutyController::class, 'createDuty']);
-    Route::get('/admin/duty/del/{id}', [App\Http\Controllers\DutyController::class, 'deleteDuty']);
-    Route::get('/admin/duty/upd/{id}', [App\Http\Controllers\DutyController::class, 'updDuty']);
-    Route::post('/admin/duty/upd/{id}', [App\Http\Controllers\DutyController::class, 'updateDuty']);
+    Route::get('/admin/duty/list', [DutyController::class, 'listDuty']);
+    Route::post('/admin/duty/add', [DutyController::class, 'createDuty']);
+    Route::get('/admin/duty/del/{id}', [DutyController::class, 'deleteDuty']);
+    Route::get('/admin/duty/upd/{id}', [DutyController::class, 'updDuty']);
+    Route::post('/admin/duty/upd/{id}', [DutyController::class, 'updateDuty']);
 });
 //
 
 //Position
 Route::middleware('auth')->group(function () {
-    Route::get('/admin/position/list', [App\Http\Controllers\PositionController::class, 'listPosition']);
-    Route::post('/admin/position/add', [App\Http\Controllers\PositionController::class, 'createPosition']);
-    Route::get('/admin/position/del/{id}', [App\Http\Controllers\PositionController::class, 'deletePosition']);
-    Route::get('/admin/position/upd/{id}', [App\Http\Controllers\PositionController::class, 'updPosition']);
-    Route::post('/admin/position/upd/{id}', [App\Http\Controllers\PositionController::class, 'updatePosition']);
+    Route::get('/admin/position/list', [PositionController::class, 'listPosition']);
+    Route::post('/admin/position/add', [PositionController::class, 'createPosition']);
+    Route::get('/admin/position/del/{id}', [PositionController::class, 'deletePosition']);
+    Route::get('/admin/position/upd/{id}', [PositionController::class, 'updPosition']);
+    Route::post('/admin/position/upd/{id}', [PositionController::class, 'updatePosition']);
 });
 //
 //Owner
@@ -66,3 +69,33 @@ Route::get('/admin/patient/del/{id}', [App\Http\Controllers\PatientController::c
 Route::get('/admin/patient/upd/{id}', [App\Http\Controllers\PatientController::class, 'updPatient'])->middleware('auth');
 Route::post('/admin/patient/upd/{id}', [App\Http\Controllers\PatientController::class, 'updatePatient'])->middleware('auth');
 //Patient
+
+//Nurse
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/nurse/list', [NurseController::class, 'listNurse']);
+    Route::post('/admin/nurse/add', [NurseController::class, 'createNurse']);
+    Route::get('/admin/nurse/del/{id}', [NurseController::class, 'deleteNurse']);
+    Route::get('/admin/nurse/upd/{id}', [NurseController::class, 'updNurse']);
+    Route::post('/admin/nurse/upd/{id}', [NurseController::class, 'updateNurse']);
+});
+//
+
+//NDP
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/ndp/list', [NdpController::class, 'listNdp']);
+    Route::post('/admin/ndp/add', [NdpController::class, 'createNdp']);
+    Route::get('/admin/ndp/del/{id}', [NdpController::class, 'deleteNdp']);
+    Route::get('/admin/ndp/upd/{id}', [NdpController::class, 'updNdp']);
+    Route::post('/admin/ndp/upd/{id}', [NdpController::class, 'updateNdp']);
+});
+//
+
+//Booking
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/booking/list', [BookingController::class, 'listBooking']);
+    Route::post('/admin/booking/add', [BookingController::class, 'createBooking']);
+    Route::get('/admin/booking/del/{id}', [BookingController::class, 'deleteBooking']);
+    Route::get('/admin/booking/upd/{id}', [BookingController::class, 'updBooking']);
+    Route::post('/admin/booking/upd/{id}', [BookingController::class, 'updateBooking']);
+});
+//

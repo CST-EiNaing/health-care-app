@@ -3,7 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Ndp;
+use App\Models\Nurse;
+use App\Models\Owner;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +24,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Myo Htet',
             'email' => 'myo@example.com',
+            "password" => Hash::make("asdffdsa"),
         ]);
 
         //Township
@@ -41,5 +47,14 @@ class DatabaseSeeder extends Seeder
         \App\Models\Position::factory()->amw()->create();
         \App\Models\Position::factory()->cgv()->create();
         \App\Models\Position::factory()->spl()->create(); 
+
+        //Owner
+        Owner::factory()->count(3)->create();
+
+        //Nurse
+        Nurse::factory()->count(7)->create();
+
+        //NDP
+        Ndp::factory()->count(8)->create();
     }
 }
