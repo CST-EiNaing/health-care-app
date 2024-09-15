@@ -218,6 +218,7 @@
                                 <td>Nurse's Name</td>
                                 <td>NRC</td>
                                 <td>Dath of Birth</td>
+                                <td>Race</td>
                                 <td>Religion</td>
                                 <td>Maritial Status</td>
                                 <td>Height</td>
@@ -252,8 +253,9 @@
                                     <td>{{ $nurse->weight }}</td>
                                     <td>{{ $nurse->academic }}</td>
                                     <td>{{ $nurse->certificate }}</td>
-                                    <td><img width="50px" height="50px" src="{{asset("images/$nurse->photo")}}"></td>
+                                    <td><img width="50px" height="50px" src="{{asset("images/nurses/$nurse->photo")}}"></td>
                                     <td>{{ $nurse->phone }}</td>
+                                    <td>{{ $nurse->address }}</td>
                                     <td>{{ $nurse->member_code }}</td>
                                     <td>{{ $nurse->daily_fee }}</td>
                                     <td>{{ $nurse->vip_fee }}</td>
@@ -261,7 +263,6 @@
                                     <td>{{ $nurse->mother_name }}</td>
                                     <td>{{ $nurse->parent_phone }}</td>
                                     <td>{{ $nurse->parent_address }}</td>
-
 
                                     <td>
                                         <a href="{{ url("/admin/nurse/del/{$nurse->id}") }}"

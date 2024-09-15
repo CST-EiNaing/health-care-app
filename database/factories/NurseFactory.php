@@ -25,7 +25,7 @@ class NurseFactory extends Factory
             'weight' => $this->faker->numberBetween(50, 100), // Weight in kg
             'academic' => $this->faker->randomElement(['High School', 'Bachelor']),
             'certificate' => $this->faker->randomElement(['HCA', 'AWM', 'SPL']), // Mock certificate
-            'photo' => $this->faker->image('public/images', 50, 50, null, false),
+            'photo' => $this->faker->image('public/images/nurses', 50, 50, null, false),
             'phone' => $this->faker->phoneNumber,
             'parent_phone' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
