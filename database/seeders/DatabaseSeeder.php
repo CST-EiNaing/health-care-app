@@ -55,13 +55,16 @@ class DatabaseSeeder extends Seeder
         //Patient
         Patient::factory()->count(4)->create();
 
-        //Nurse
+        // Nurse
         Nurse::factory()->count(7)->create();
 
-        //NDP
+        // NDP
         Ndp::factory()->count(8)->create();
 
         //Payment Method
         $this->call(PaymentMethodSeeder::class);
+
+        // Booking
+        $this->call(BookingSeeder::class);
     }
 }
