@@ -28,7 +28,7 @@
 								<label class="form-control">Position Name</label>
 							</td>
 							<td>
-								<input type="text" name="name" class="form-control">
+								<input required type="text" name="name" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -36,7 +36,7 @@
 								<label class="form-control">Description</label>
 							</td>
 							<td>
-								<input type="text" name="description" class="form-control">
+								<input required type="text" name="description" class="form-control">
 							</td>
 						</tr>
 						

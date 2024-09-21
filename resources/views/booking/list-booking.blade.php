@@ -67,19 +67,19 @@
                                 <!-- From Date -->
                                 <tr>
                                     <td><label class="form-control">From Date</label></td>
-                                    <td><input type="date" id="from_date" name="from_date" class="form-control"></td>
+                                    <td><input required type="date" id="from_date" name="from_date" class="form-control"></td>
                                 </tr>
 
                                 <!-- To Date -->
                                 <tr>
                                     <td><label class="form-control">To Date</label></td>
-                                    <td><input type="date" id="to_date" name="to_date" class="form-control"></td>
+                                    <td><input required type="date" id="to_date" name="to_date" class="form-control"></td>
                                 </tr>
 
                                 <!-- Service Fee -->
                                 <tr>
                                     <td><label class="form-control">Service Fee</label></td>
-                                    <td><input type="number" id="service_fee" name="service_fee" class="form-control"></td>
+                                    <td><input required type="number" id="service_fee" name="service_fee" class="form-control"></td>
                                 </tr>
 
                                 <!-- Nurse Fee (auto-calculated) -->
@@ -123,7 +123,7 @@
             <!-- Booking List -->
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header" style="font-weight:bold;">Booking Lists</div>
+                    <div class="card-header textwh" style="font-weight:bold;">Booking Lists</div>
                     <div class="card-body">
                         <table class="table table-primary table-sm">
                             <tr>
