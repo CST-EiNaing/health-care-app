@@ -107,3 +107,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/method/upd/{id}', [App\Http\Controllers\PaymentMethodController::class, 'updMethod']);
     Route::post('/admin/method/upd/{id}', [App\Http\Controllers\PaymentMethodController::class, 'updateMethod']);
 });
+
+//Payment
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/payment/list', [App\Http\Controllers\PaymentController::class, 'listPayment']);
+    Route::post('/admin/payment/add', [App\Http\Controllers\PaymentController::class, 'createPayment']);
+    Route::get('/admin/payment/del/{id}', [App\Http\Controllers\PaymentController::class, 'deletePayment']);
+    Route::get('/admin/payment/upd/{id}', [App\Http\Controllers\PaymentController::class, 'updPayment']);
+    Route::post('/admin/payment/upd/{id}', [App\Http\Controllers\PaymentController::class, 'updatePayment']);
+});
+

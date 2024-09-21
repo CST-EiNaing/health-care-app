@@ -1,15 +1,11 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -31,9 +27,7 @@
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                     @if (Auth::check())
                         @if (Auth::user()->id == 1 || Auth::user()->id == 2)
                             <!-- Left Side Of Navbar -->
@@ -87,10 +81,14 @@
                                         Method
                                     </a>
                                 </li>
+                                <li>
+                                    <a class="nav-link" href="{{ url('/admin/payment/list') }}">
+                                        Payment
+                                    </a>
+                                </li>
                         @endif
                     @endif
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
