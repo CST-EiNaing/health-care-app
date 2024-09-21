@@ -28,7 +28,7 @@
 								<label class="form-control">Duty Name</label>
 							</td>
 							<td>
-								<input type="text" name="name" class="form-control">
+								<input required type="text" name="name" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -36,7 +36,7 @@
 								<label class="form-control">Fee</label>
 							</td>
 							<td>
-								<input type="number" name="fee" class="form-control">
+								<input required type="number" name="fee" class="form-control">
 							</td>
 						</tr>
 						

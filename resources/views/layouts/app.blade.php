@@ -10,6 +10,11 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .custom-text li a {
+            color: #fff;
+        }
+    </style>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -17,10 +22,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background: #1977cc;color:#fff">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand text-white" href="{{ url('/') }}">
+                    Zabu Hein
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -31,14 +36,14 @@
                     @if (Auth::check())
                         @if (Auth::user()->id == 1 || Auth::user()->id == 2)
                             <!-- Left Side Of Navbar -->
-                            <ul class="navbar-nav me-auto">
+                            <ul class="navbar-nav me-auto navmenu custom-text">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Master
                                     </a>
 
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" style="background: #1977cc;">
                                         <li>
                                             <a class="nav-link" href="{{ url('admin/township/list') }}">Townships</a>
                                         </li>
@@ -90,7 +95,7 @@
                     @endif
                     </ul>
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto custom-text">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -111,8 +116,8 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="dropdown-menu dropdown-menu-end" style="background: #1977cc;">
+                                    <a class="dropdown-item nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -128,6 +133,8 @@
                 </div>
             </div>
         </nav>
+
+
 
         <main class="py-4">
             @yield('content')

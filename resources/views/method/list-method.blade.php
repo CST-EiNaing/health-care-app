@@ -27,7 +27,7 @@
 								<label class="form-control">Method Name</label>
 							</td>
 							<td>
-								<input type="text" name="name" class="form-control">
+								<input required type="text" name="name" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -35,7 +35,7 @@
 								<label class="form-control">QR Photo</label>
 							</td>
 							<td>
-								<input type="file" name="qr_photo" class="form-control">
+								<input required type="file" name="qr_photo" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -43,7 +43,7 @@
 								<label class="form-control">Account Number</label>
 							</td>
 							<td>
-								<input type="text" name="account_number" class="form-control">
+								<input required type="text" name="account_number" class="form-control">
 							</td>
 						</tr>
 						<tr>

@@ -28,7 +28,7 @@
 								<label class="form-control">Owner's Name</label>
 							</td>
 							<td>
-								<input type="text" name="name" class="form-control">
+								<input required type="text" name="name" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -36,7 +36,7 @@
 								<label class="form-control">NRC</label>
 							</td>
 							<td>
-								<input type="text" name="nrc" class="form-control">
+								<input required type="text" name="nrc" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -44,7 +44,7 @@
 								<label class="form-control">Father's Name</label>
 							</td>
 							<td>
-								<input type="text" name="father_name" class="form-control">
+								<input required type="text" name="father_name" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -52,7 +52,7 @@
 								<label class="form-control">Patient Relative</label>
 							</td>
 							<td>
-								<input type="text" name="patient_relative" class="form-control">
+								<input required type="text" name="patient_relative" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -60,7 +60,7 @@
 								<label class="form-control">Phone</label>
 							</td>
 							<td>
-								<input type="text" name="phone" class="form-control">
+								<input required type="text" name="phone" class="form-control">
 							</td>
 						</tr>
 						<tr>
@@ -68,7 +68,7 @@
 								<label class="form-control">Address</label>
 							</td>
 							<td>
-								<input type="text" name="address" class="form-control">
+								<input required type="text" name="address" class="form-control">
 							</td>
 						</tr>
 						<tr>

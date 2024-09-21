@@ -55,7 +55,7 @@
                                         <label class="form-control">Name</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="name" class="form-control">
+                                        <input required type="text" name="name" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -63,7 +63,7 @@
                                         <label class="form-control">Age</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="age" class="form-control">
+                                        <input required type="text" name="age" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -85,7 +85,7 @@
                                         <label class="form-control">Diagnotic</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="diagnotic" class="form-control">
+                                        <input required type="text" name="diagnotic" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -93,7 +93,7 @@
                                         <label class="form-control">Phone</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="phone" class="form-control">
+                                        <input required type="text" name="phone" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -101,7 +101,7 @@
                                         <label class="form-control">Address</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="address" class="form-control">
+                                        <input required type="text" name="address" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>

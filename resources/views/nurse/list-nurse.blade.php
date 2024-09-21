@@ -39,7 +39,7 @@
                                         <label class="form-control">Nurse's Name</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="name" class="form-control">
+                                        <input required type="text" name="name" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -47,7 +47,7 @@
                                         <label class="form-control">Nurse's NRC</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="nrc" class="form-control">
+                                        <input required type="text" name="nrc" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -55,7 +55,7 @@
                                         <label class="form-control">Dath Of Birth</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="dob" class="form-control">
+                                        <input required type="text" name="dob" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -63,7 +63,7 @@
                                         <label class="form-control">RACE</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="race" class="form-control">
+                                        <input required type="text" name="race" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -71,7 +71,7 @@
                                         <label class="form-control">Religion</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="religion" class="form-control">
+                                        <input required type="text" name="religion" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -79,7 +79,7 @@
                                         <label class="form-control">Maritial Status</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="maritial_status" class="form-control">
+                                        <input required type="text" name="maritial_status" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -87,14 +87,14 @@
                                         <label class="form-control">Height</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="height" class="form-control">
+                                        <input required type="text" name="height" class="form-control">
                                     </td>
                                 </tr><tr>
                                     <td>
                                         <label class="form-control">Weight</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="weight" class="form-control">
+                                        <input required type="text" name="weight" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -102,7 +102,7 @@
                                         <label class="form-control">Academic</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="academic" class="form-control">
+                                        <input required type="text" name="academic" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -110,7 +110,7 @@
                                         <label class="form-control">Certificate</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="certificate" class="form-control">
+                                        <input required type="text" name="certificate" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -118,7 +118,7 @@
                                         <label class="form-control">Photo</label>
                                     </td>
                                     <td>
-                                        <input type="file" name="photo" class="form-control">
+                                        <input required type="file" name="photo" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -126,7 +126,7 @@
                                         <label class="form-control">Phone</label>
                                     </td>
                                     <td>
-                                        <input type="number" name="phone" class="form-control">
+                                        <input required type="number" name="phone" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,7 +134,7 @@
                                         <label class="form-control">Address</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="address" class="form-control">
+                                        <input required type="text" name="address" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,7 +142,7 @@
                                         <label class="form-control">Member Code</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="member_code" class="form-control">
+                                        <input required type="text" name="member_code" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -150,7 +150,7 @@
                                         <label class="form-control">Daily Fee</label>
                                     </td>
                                     <td>
-                                        <input type="number" name="daily_fee" class="form-control">
+                                        <input required type="number" name="daily_fee" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -158,7 +158,7 @@
                                         <label class="form-control">Vip Fee</label>
                                     </td>
                                     <td>
-                                        <input type="number" name="vip_fee" class="form-control">
+                                        <input required type="number" name="vip_fee" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -166,7 +166,7 @@
                                         <label class="form-control">Father Name</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="father_name" class="form-control">
+                                        <input required type="text" name="father_name" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -174,7 +174,7 @@
                                         <label class="form-control">Mother Name</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="mother_name" class="form-control">
+                                        <input required type="text" name="mother_name" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -182,7 +182,7 @@
                                         <label class="form-control">Parent's Phone</label>
                                     </td>
                                     <td>
-                                        <input type="number" name="parent_phone" class="form-control">
+                                        <input required type="number" name="parent_phone" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
@@ -190,7 +190,7 @@
                                         <label class="form-control">Parent Address</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="parent_address" class="form-control">
+                                        <input required type="text" name="parent_address" class="form-control">
                                     </td>
                                 </tr>
                                 <tr>
