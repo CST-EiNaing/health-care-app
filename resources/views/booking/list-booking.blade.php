@@ -2,6 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
+            <!-- Success and Error Messages -->
             @if (session('info_success'))
                 <div class="alert alert-success">
                     {{ session('info_success') }}
@@ -12,128 +13,117 @@
                     {{ session('info_danger') }}
                 </div>
             @endif
+
+            <!-- Add New Booking Form -->
             <div class="col-md-4">
                 <div class="card ">
                     <div class="card-header" style="font-weight:bold;">
                         Add New Booking
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('/admin/booking/add') }}" method="post" enctype="multipart/form-data">
+                        <form id="booking-form" action="{{ url('/admin/booking/add') }}" method="post">
                             @csrf
 
                             <table class="table table-sm">
+                                <!-- Owner -->
                                 <tr>
                                     <td><label class="form-control">Owner's Name:</label></td>
                                     <td>
                                         <select name="owner_id" class="form-control">
                                             @foreach ($owners as $owner)
-                                                <option value="{{ $owner->id }}">
-                                                    {{ $owner->name }}
-                                                </option>
-                                            @endforeach;
+                                                <option value="{{ $owner->id }}">{{ $owner->name }}</option>
+                                            @endforeach
                                         </select>
                                     </td>
-
                                 </tr>
+
+                                <!-- Patient -->
                                 <tr>
-                                    <td><label class=" form-control">Patient:</label></td>
+                                    <td><label class="form-control">Patient:</label></td>
                                     <td>
-                                        <select name="patient_id" class=" form-control" id="">
+                                        <select name="patient_id" class="form-control">
                                             @foreach ($patients as $patient)
-                                                <option value="{{ $patient->id }}">
-                                                    {{ $patient->name }}
-                                                </option>
-                                            @endforeach;
+                                                <option value="{{ $patient->id }}">{{ $patient->name }}</option>
+                                            @endforeach
                                         </select>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><label class=" form-control">NDP:</label></td>
-                                    <td>
 
-                                        <select name="ndp_id" class=" form-control" id="">
+                                <!-- NDP -->
+                                <tr>
+                                    <td><label class="form-control">NDP:</label></td>
+                                    <td>
+                                        <select id="ndp_id" name="ndp_id" class="form-control">
                                             @foreach ($ndps as $ndp)
-                                                {{ $ndp->id }}
-                                                <option value="{{ $ndp->id }}">
-                                                    {{ $ndp->id }}
+                                                <option value="{{ $ndp->id }}" data-duty-id="{{ $ndp->duty_id }}"
+                                                    data-fee="{{ $ndp->fee }}">
+                                                    {{ $ndp->description }}
                                                 </option>
-                                            @endforeach;
+                                            @endforeach
                                         </select>
                                     </td>
                                 </tr>
+
+                                <!-- From Date -->
                                 <tr>
-                                    <td>
-                                        <label class="form-control">From Date</label>
-                                    </td>
-                                    <td>
-                                        <input type="date" name="from_date" class="form-control">
+                                    <td><label class="form-control">From Date</label></td>
+                                    <td><input type="date" id="from_date" name="from_date" class="form-control"></td>
+                                </tr>
+
+                                <!-- To Date -->
+                                <tr>
+                                    <td><label class="form-control">To Date</label></td>
+                                    <td><input type="date" id="to_date" name="to_date" class="form-control"></td>
+                                </tr>
+
+                                <!-- Service Fee -->
+                                <tr>
+                                    <td><label class="form-control">Service Fee</label></td>
+                                    <td><input type="number" id="service_fee" name="service_fee" class="form-control"></td>
+                                </tr>
+
+                                <!-- Nurse Fee (auto-calculated) -->
+                                <tr>
+                                    <td><label class="form-control">Nurse Fee</label></td>
+                                    <td><input type="number" id="nurse_fee" name="nurse_fee" class="form-control" readonly>
                                     </td>
                                 </tr>
+
+                                <!-- Total (auto-calculated) -->
                                 <tr>
-                                    <td>
-                                        <label class="form-control">To Date</label>
-                                    </td>
-                                    <td>
-                                        <input type="date" name="to_date" class="form-control">
+                                    <td><label class="form-control">Total</label></td>
+                                    <td><input type="number" id="total" name="total" class="form-control" readonly>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <label class="form-control">Service Fee</label>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="service_fee" class="form-control">
-                                    </td>
+
+                                <!-- Nurse Profit (auto-calculated) -->
+                                <tr style="display: none;">
+                                    <td><label class="form-control">Nurse Profit</label></td>
+                                    <td><input type="number" id="nurse_profit" name="nurse_profit" class="form-control"
+                                            readonly></td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <label class="form-control">Nurse Fee</label>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="nurse_fee" class="form-control">
-                                    </td>
+
+                                <!-- Company Total (auto-calculated) -->
+                                <tr style="display: none;">
+                                    <td><label class="form-control">Company Total</label></td>
+                                    <td><input type="number" id="total_income" name="total_income" class="form-control"
+                                            readonly></td>
                                 </tr>
+
                                 <tr>
-                                    <td>
-                                        <label class="form-control">Total</label>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="total" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="form-control">Nurse Profit</label>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="nurse_profit" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="form-control">Company's Total Income</label>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="company_total" class="form-control">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="submit" value="Add" class="btn btn-primary btn-sm form-control">
+                                    <td><input type="submit" value="Add" class="btn btn-primary btn-sm form-control">
                                     </td>
                                 </tr>
                             </table>
                         </form>
                     </div>
-
                 </div>
             </div>
 
+            <!-- Booking List -->
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header" style="font-weight:bold;">
-                        Township Lists
-                    </div>
+                    <div class="card-header" style="font-weight:bold;">Booking Lists</div>
                     <div class="card-body">
                         <table class="table table-primary table-sm">
                             <tr>
@@ -146,42 +136,79 @@
                                 <td>Service Fee</td>
                                 <td>Nurse Fee</td>
                                 <td>Total</td>
-                                <td>Nurse Profit</td>
-                                <td>Company Total</td>
+                                {{-- <td>Nurse profit</td>
+                                <td>Total income</td> --}}
                                 <td>Delete</td>
                                 <td>Update</td>
                             </tr>
-
                             @foreach ($bookings as $booking)
                                 <tr>
                                     <td>{{ $booking->id }}</td>
                                     <td>{{ $booking->owner->name }}</td>
                                     <td>{{ $booking->patient->name }}</td>
-                                    <td>{{ $booking->ndp->nurse_name }}</td>
-                                    <td>{{ $booking->id }}</td>
-                                    <td>{{ $booking->id }}</td>
-                                    <td>{{ $booking->id }}</td>
-                                    <td>{{ $booking->name }}</td>
-                                    <td>
-                                        <a href="{{ url("/admin/booking/del/{$booking->id}") }}"
-                                            class="btn btn-danger btn-sm"> Delete</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ url("/admin/booking/upd/{$booking->id}") }}"
-                                            class="btn btn-warning btn-sm"> Update</a>
-                                    </td>
+                                    <td>{{ $booking->ndp->description }}</td>
+                                    <td>{{ $booking->from_date}}</td>
+                                    <td>{{ $booking->to_date }}</td>
+                                    <td>{{ $booking->service_fee }}</td>
+                                    <td>{{ $booking->nurse_fee }}</td>
+                                    <td>{{ $booking->total }}</td>
+                                    {{-- <td>{{ $booking->nurse_profit }}</td>
+                                    <td>{{ $booking->total_income }}</td> --}}
+                                    <td><a href="{{ url("/admin/booking/del/{$booking->id}") }}"
+                                            class="btn btn-danger btn-sm">Delete</a></td>
+                                    <td><a href="{{ url("/admin/booking/upd/{$booking->id}") }}"
+                                            class="btn btn-warning btn-sm">Update</a></td>
                                 </tr>
                             @endforeach
-
                         </table>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#booking-form').on('input', function () {
+                const fromDate = $('#from_date').val();
+                const toDate = $('#to_date').val();
+                const ndp = $('#ndp_id option:selected');
+                const dutyId = ndp.data('duty-id');
+                const fee = parseFloat(ndp.data('fee'));
+                const serviceFee = parseFloat($('#service_fee').val()) || 0;
+    
+                if (fromDate && toDate && !isNaN(fee)) {
+                    const start = new Date(fromDate);
+                    const end = new Date(toDate);
+                    let nurseFee = 0;
+    
+                    // Calculate nurseFee based on dutyId
+                    if (dutyId == 1) { // Daily Rate
+                        const days = (end - start) / (1000 * 60 * 60 * 24) + 1;
+                        nurseFee = days * fee;
+                    } else if (dutyId == 2) { // Monthly Rate
+                        const months = (end.getMonth() - start.getMonth() + (12 * (end.getFullYear() - start.getFullYear())));
+                        nurseFee = months * fee;
+                    }
+    
+                    // Updated nurse_profit logic based on dutyId
+                    let nurseProfit;
+                    if (dutyId == 1) {
+                        nurseProfit = parseFloat(fee); // Set nurse_profit to the value of fee
+                    } else {
+                        nurseProfit = nurseFee * 0.5; // Default to 50% of nurseFee
+                    }
+    
+                    const total = serviceFee + nurseFee;
+                    const totalIncome = serviceFee + nurseProfit;
+    
+                    // Update form fields with calculated values
+                    $('#nurse_fee').val(nurseFee);
+                    $('#total').val(total);
+                    $('#nurse_profit').val(nurseProfit);
+                    $('#total_income').val(totalIncome);
+                }
+            });
+        });
+    </script>
 @endsection
