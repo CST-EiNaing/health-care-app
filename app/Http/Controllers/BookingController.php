@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Ndp;
 use App\Models\Owner;
 use App\Models\Patient;
+use App\Models\Duty;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -17,12 +18,14 @@ class BookingController extends Controller
         $patients = Patient::all();
         $ndps = Ndp::all();
         $bookings = Booking::all();
+        $duties = Duty::all();
 
         return view('booking.list-booking', [
             'owners' => $owners,
             'patients' => $patients,
             'ndps' => $ndps,
-            'bookings' => $bookings
+            'bookings' => $bookings,
+            'duties' => $duties
         ]);
     }
 

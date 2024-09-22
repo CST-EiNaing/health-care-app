@@ -79,7 +79,7 @@
                                 <!-- Service Fee -->
                                 <tr>
                                     <td><label class="form-control">Service Fee</label></td>
-                                    <td><input required type="number" id="service_fee" name="service_fee" class="form-control"></td>
+                                    <td><input required type="number" id="service_fee" name="service_fee" class="form-control" readonly></td>
                                 </tr>
 
                                 <!-- Nurse Fee (auto-calculated) -->
@@ -166,7 +166,6 @@
             </div>
         </div>
     </div>
-
     <script>
         $(document).ready(function () {
             $('#booking-form').on('input', function () {
@@ -175,13 +174,12 @@
                 const ndp = $('#ndp_id option:selected');
                 const dutyId = ndp.data('duty-id');
                 const fee = parseFloat(ndp.data('fee'));
-                const serviceFee = parseFloat($('#service_fee').val()) || 0;
-    
+                const duties = @json($duties);
                 if (fromDate && toDate && !isNaN(fee)) {
+                    dutyData = duties.find(duty => duty.id === dutyId);
                     const start = new Date(fromDate);
                     const end = new Date(toDate);
                     let nurseFee = 0;
-    
                     // Calculate nurseFee based on dutyId
                     if (dutyId == 1) { // Daily Rate
                         const days = (end - start) / (1000 * 60 * 60 * 24) + 1;
@@ -190,7 +188,6 @@
                         const months = (end.getMonth() - start.getMonth() + (12 * (end.getFullYear() - start.getFullYear())));
                         nurseFee = months * fee;
                     }
-    
                     // Updated nurse_profit logic based on dutyId
                     let nurseProfit;
                     if (dutyId == 1) {
@@ -198,15 +195,14 @@
                     } else {
                         nurseProfit = nurseFee * 0.5; // Default to 50% of nurseFee
                     }
-    
-                    const total = serviceFee + nurseFee;
-                    const totalIncome = serviceFee + nurseProfit;
-    
-                    // Update form fields with calculated values
+                    const dutyFee = dutyData?.fee;
+                    const total = dutyFee + nurseFee;
+                    const totalIncome = dutyFee + nurseProfit;
                     $('#nurse_fee').val(nurseFee);
                     $('#total').val(total);
                     $('#nurse_profit').val(nurseProfit);
                     $('#total_income').val(totalIncome);
+                    $('#service_fee').val(dutyFee);
                 }
             });
         });
