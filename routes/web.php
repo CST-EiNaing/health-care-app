@@ -19,9 +19,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [App\Http\Controllers\UserViewController::class, 'getNurseLists']);
+
 
 Auth::routes();
 

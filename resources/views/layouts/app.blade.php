@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background: #1977cc;color:#fff">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
-                    Zabu Hein
+                    Za Bu Hein
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
