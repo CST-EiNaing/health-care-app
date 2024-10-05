@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Township;
 use App\Models\Nurse;
 use Carbon\Carbon;
+
 class UserViewController extends Controller
 {
     //
@@ -15,12 +16,12 @@ class UserViewController extends Controller
     public function getNurseLists()
     {
         // Eager load the township relation and calculate the age using Carbon
-        $nurses = Nurse::with('township')->get()->map(function($nurse) {
+        $nurses = Nurse::with('township')->get()->map(function ($nurse) {
             // dd($nurse->dob);
             $nurse->age = Carbon::parse($nurse->dob)->age;
             return $nurse;
-        }); 
-     
+        });
+
         $townships = Township::all();
         return view('index', [
             'townships' => $townships,
@@ -31,9 +32,10 @@ class UserViewController extends Controller
     public function getAppointments()
     {
         $ndps = Ndp::select('id', 'description')->get();
-        $nurses= Nurse::select('id', 'name')->get();
+        $nurses = Nurse::select('id', 'name')->get();
+        $townships = Township::all();
 
-        return view('select-date', compact('ndps', 'nurses'));
+        return view('select-date', compact('ndps', 'nurses', 'townships'));
     }
     
 }
