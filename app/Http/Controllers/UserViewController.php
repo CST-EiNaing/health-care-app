@@ -37,5 +37,12 @@ class UserViewController extends Controller
 
         return view('select-date', compact('ndps', 'nurses', 'townships'));
     }
-    
+
+    public function getInfo()
+    {
+        $townships = Township::all();
+
+        return view('info', compact('townships'));
+    }
+
 }
