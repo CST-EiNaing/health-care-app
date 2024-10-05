@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [App\Http\Controllers\UserViewController::class, 'getNurseLists']);
+Route::get('/appointment', [App\Http\Controllers\UserViewController::class, 'getAppointments'])->name('appointment');
 
 
 Auth::routes();
