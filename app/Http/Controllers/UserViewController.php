@@ -70,5 +70,12 @@ class UserViewController extends Controller
         }
         return view('select-date', compact('ndps', 'townships', 'township_id','start_date', 'end_date'));
     }
-    
+
+    public function getInfo()
+    {
+        $townships = Township::all();
+
+        return view('info', compact('townships'));
+    }
+
 }

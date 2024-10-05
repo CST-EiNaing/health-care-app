@@ -1240,6 +1240,14 @@ section,
   background: color-mix(in srgb, var(--accent-color) 90%, white 15%);
 }
 
+@media (max-width: 786px) {
+  .appointment .php-email-form .remove-border {
+    border-right: none !important;
+    border-color: transparent !important;
+    padding-right: 0 !important;
+  }
+  }
+
 /*--------------------------------------------------------------
 # Departments Section
 --------------------------------------------------------------*/

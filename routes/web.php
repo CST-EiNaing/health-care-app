@@ -5,6 +5,7 @@ use App\Http\Controllers\DutyController;
 use App\Http\Controllers\NdpController;
 use App\Http\Controllers\NurseController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\UserViewController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [App\Http\Controllers\UserViewController::class, 'getNurseLists']);
 Route::get('/appointment', [App\Http\Controllers\UserViewController::class, 'getAppointments'])->name('appointment');
+Route::get('/info',[UserViewController::class, 'getInfo']);
 Route::post('/check-appointment', [App\Http\Controllers\UserViewController::class, 'getAvailbaleNurses']);
 
 Auth::routes();
