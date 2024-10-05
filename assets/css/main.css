@@ -1325,14 +1325,21 @@ section,
 
 .doctors .team-member .pic {
   overflow: hidden;
-  width: 150px;
+  width: 150px; /* Ensures the width is fixed */
+  height: 150px; /* Ensures the height is fixed */
   border-radius: 50%;
   flex-shrink: 0;
+  min-width: 150px; /* Prevents shrinking */
+  min-height: 150px; /* Prevents shrinking */
 }
 
 .doctors .team-member .pic img {
+  width: 100%; /* Ensures the image fills the container */
+  height: 100%; /* Ensures the image fills the container */
   transition: ease-in-out 0.3s;
 }
+
+
 
 .doctors .team-member:hover {
   transform: translateY(-10px);
