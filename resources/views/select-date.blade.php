@@ -11,8 +11,20 @@
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-            <form action="{{url('/')}}" method="post" enctype="multipart/form-data" role="form">
+            <form action="{{ url('/appointment') }}" method="post" enctype="multipart/form-data" role="form">
                 @csrf
+
+                <div class="row mt-4">
+                    <!-- Select Services -->
+                    <div class="col-md-12 form-group">
+                        <label for="service" class="form-label"><strong>Select Township</strong></label>
+                        <select name="township" id="service" class="form-select">
+                            @foreach ($townships as $township)
+                                <option value="{{ $township->id }}">{{ $township->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 <div class="row">
                     <!-- From Date -->
@@ -29,27 +41,7 @@
                     </div>
                 </div>
 
-                <div class="row mt-4">
-                    <!-- Select Services -->
-                    <div class="col-md-6 form-group">
-                        <label for="service" class="form-label"><strong>Select Service</strong></label>
-                        <select name="ndp" id="service" class="form-select">
-                            @foreach($ndps as $ndp)
-                                <option value="{{ $ndp->id }}">{{ $ndp->description }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
-                    <!-- Select Nurses -->
-                    <div class="col-md-6 form-group">
-                        <label for="nurse" class="form-label"><strong>Select Nurse</strong></label>
-                        <select name="nurse" id="nurse" class="form-select" required="">
-                             @foreach ($nurses as $nurse)
-                                 <option value="{{$nurse->id}}">{{$nurse->name}}</option>
-                             @endforeach
-                        </select>
-                    </div>
-                </div>
 
                 <div class="mt-4">
                     {{-- <div class="loading">Loading</div>
