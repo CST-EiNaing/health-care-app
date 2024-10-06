@@ -17,7 +17,6 @@
 </div>
 <header id="header" class="header sticky-top shadow-sm">
     <div class="branding d-flex align-items-center">
-
         <div class="container position-relative d-flex align-items-center justify-content-between">
             <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -36,10 +35,6 @@
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
-
-
         </div>
-
     </div>
-
 </header>

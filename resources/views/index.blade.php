@@ -634,21 +634,14 @@
                     </div><!-- End Email Us Column -->
                 </div>
             </div>
-
-
-
         </section><!-- /Contact Section -->
     </main>
-
     @include('footer')
-
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
-
     <!-- Preloader -->
     <div id="preloader"></div>
-
     <!-- Vendor JS Files -->
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/php-email-form/validate.js"></script>
@@ -666,15 +659,12 @@
 <script>
     function handleTownshipChange() {
         let selectedTownshipId = parseInt(document.getElementById('township').value, 10);
-        console.log("Selected Township ID:", selectedTownshipId);
-
+        
         let nurseLists = @json($nurses); // Data from Laravel controller
         let defaultImageUrl = "{{ asset('images/nurses/default.jpg') }}"; // Default image if no photo
 
         // Filter nurses based on the selected township
         let nurseByTownship = nurseLists.filter(data => data.township_id === selectedTownshipId);
-        console.log(nurseLists, 'nurseLists');
-        console.log(nurseByTownship, 'nurseByTownship');
 
         // Get the container for nurse cards
         const nurseContainer = document.getElementById('nurse-container');
@@ -735,7 +725,6 @@
             nurseContainer.appendChild(nurseCard);
         });
     }
-
     // Run the function on page load and when township selection changes
     document.addEventListener("DOMContentLoaded", function() {
         handleTownshipChange(); // Initial load

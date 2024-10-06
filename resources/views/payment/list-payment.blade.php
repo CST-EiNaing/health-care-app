@@ -145,13 +145,11 @@
         const paymentName = selectedOption.getAttribute('data-name');
         const qrPhoto = selectedOption.getAttribute('data-qr_photo');
         const accountNumber = selectedOption.getAttribute('data-account_number');
-        console.log(paymentName, 'paymentName')
         if (paymentName === 'Cash') {
             paymentDetailsRow.style.display = 'block';
             qrPhotoImg.src = `{{ asset('images/payment_method/images.png') }}`;
             accountNumberSpan.textContent = 'No Account Number';
         } else {
-            console.log(qrPhoto, 'qrPhoto')
             paymentDetailsRow.style.display = 'block';
             qrPhotoImg.src = qrPhoto ?  `{{ asset('images/payment_method/') }}/${qrPhoto}` : `{{ asset('images/payment_method/images.png') }}`;
             accountNumberSpan.textContent = accountNumber || 'No Account Number';
