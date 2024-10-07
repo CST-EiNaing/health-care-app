@@ -37,15 +37,19 @@ class UserViewController extends Controller
         $start_date = Carbon::now()->toDateString(); // Current date
         $end_date = Carbon::now()->addDays(3)->toDateString(); 
         return view('select-date', compact('ndps', 'nurses', 'townships', 'start_date', 'end_date'));
-    }
-    public function getAvailbaleNurses(Request $request)
+    } 
+
+    public function getAvailableNurses(Request $request)
     {   
         $start_date = $request->start_date;
         $end_date = $request->end_date;
-        $township_id = ((int) $request->township_id);
+        $township_id = (int) $request->township_id;
+        
+        // Fetch nurses from the selected township
         $nurses = Nurse::where('township_id', $township_id)->get();
-        $bookings = Booking::get();
         $townships = Township::all();
+        
+        // Filter bookings between the date range
         $filteredNdpIds = Booking::where(function ($query) use ($start_date, $end_date) {
             $query->whereBetween('from_date', [$start_date, $end_date])
                   ->orWhereBetween('to_date', [$start_date, $end_date])
@@ -54,22 +58,30 @@ class UserViewController extends Controller
                             ->where('to_date', '>=', $end_date);
                   });
         })->pluck('ndp_id');
+        
+        // Get available NDPs (excluding booked ones)
         $ndpDataArray = Ndp::whereNotIn('id', $filteredNdpIds)->get();
+        
+        // Create an array to map nurses by ID and calculate their age
         $nursesById = [];
         foreach ($nurses as $nurse) {
-            $nursesById[$nurse['id']] = $nurse;
+            // Calculate the age from dob
+            $nurse->age = isset($nurse->dob) ? Carbon::parse($nurse->dob)->age : 'Not provided';
+            $nursesById[$nurse->id] = $nurse;
         }
+        
+        // Assign nurse data to available NDPs
         $ndps = [];
         foreach ($ndpDataArray as $ndp) {
-            if (isset($nursesById[$ndp['nurse_id']])) {
-                $ndp['nurse_data'] = $nursesById[$ndp['nurse_id']];
-            } else {
-                $ndp['nurse_data'] = null; 
-            }
+            // Attach nurse data to NDPs, if exists
+            $ndp['nurse_data'] = $nursesById[$ndp['nurse_id']] ?? null;
             $ndps[] = $ndp; 
         }
-        return view('select-date', compact('ndps', 'townships', 'township_id','start_date', 'end_date'));
+    
+        // Return the view with the necessary data
+        return view('select-date', compact('ndps', 'townships', 'township_id', 'start_date', 'end_date'));
     }
+      
 
     public function getInfo()
     {
