@@ -10,7 +10,7 @@
 
     <!-- Favicons -->
     <link href="{{ asset('images/zabuhein.jpg') }}" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    {{-- <link href="{{asset('../assets/img/favicon.png')}}" rel="icon"> --}}
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -491,8 +491,7 @@
             </div><!-- End Section Title -->
             <div class="container">
                 <div class="row gy-4" id="nurse-container"
-                    style="height: 638px; scroll-behavior: smooth; overflow: scroll;"
-                    >
+                    style="height: 638px; scroll-behavior: smooth; overflow: scroll;">
                 </div>
             </div>
 
@@ -659,7 +658,7 @@
 <script>
     function handleTownshipChange() {
         let selectedTownshipId = parseInt(document.getElementById('township').value, 10);
-        
+
         let nurseLists = @json($nurses); // Data from Laravel controller
         let defaultImageUrl = "{{ asset('images/nurses/default.jpg') }}"; // Default image if no photo
 

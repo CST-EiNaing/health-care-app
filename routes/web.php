@@ -25,7 +25,7 @@ Route::get('/', [App\Http\Controllers\UserViewController::class, 'getNurseLists'
 Route::get('/appointment', [App\Http\Controllers\UserViewController::class, 'getAppointments'])->name('appointment');
 Route::post('/check-appointment', [App\Http\Controllers\UserViewController::class, 'getAvailableNurses']);
 //info
-Route::get('/info/{id}',[UserViewController::class, 'getInfo']);
+Route::get('/info/nurse/{id}', [UserViewController::class, 'getInfo']);
 
 Auth::routes();
 
