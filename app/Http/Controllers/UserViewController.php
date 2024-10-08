@@ -39,55 +39,105 @@ class UserViewController extends Controller
         return view('select-date', compact('ndps', 'nurses', 'townships', 'start_date', 'end_date'));
     } 
 
-    public function getAvailableNurses(Request $request)
-    {   
-        $start_date = $request->start_date;
-        $end_date = $request->end_date;
-        $township_id = (int) $request->township_id;
+    // public function getAvailableNurses(Request $request)
+    // {   
+    //     $start_date = $request->start_date;
+    //     $end_date = $request->end_date;
+    //     $township_id = (int) $request->township_id;
         
-        // Fetch nurses from the selected township
-        $nurses = Nurse::where('township_id', $township_id)->get();
-        $townships = Township::all();
+    //     // Fetching data
+    //     $nurses = Nurse::where('township_id', $township_id)->get();
+    //     $bookings = Booking::get();
+    //     $townships = Township::all();
+
+    //     // dd($nurses);
         
-        // Filter bookings between the date range
-        $filteredNdpIds = Booking::where(function ($query) use ($start_date, $end_date) {
-            $query->whereBetween('from_date', [$start_date, $end_date])
-                  ->orWhereBetween('to_date', [$start_date, $end_date])
-                  ->orWhere(function ($query) use ($start_date, $end_date) {
-                      $query->where('from_date', '<=', $start_date)
-                            ->where('to_date', '>=', $end_date);
-                  });
-        })->pluck('ndp_id');
+    //     // Filtering booked ndps
+    //     $filteredNdpIds = Booking::where(function ($query) use ($start_date, $end_date) {
+    //         $query->whereBetween('from_date', [$start_date, $end_date])
+    //               ->orWhereBetween('to_date', [$start_date, $end_date])
+    //               ->orWhere(function ($query) use ($start_date, $end_date) {
+    //                   $query->where('from_date', '<=', $start_date)
+    //                         ->where('to_date', '>=', $end_date);
+    //               });
+    //     })->pluck('ndp_id');
+
+    //     // dd($filteredNdpIds);
         
-        // Get available NDPs (excluding booked ones)
-        $ndpDataArray = Ndp::whereNotIn('id', $filteredNdpIds)->get();
+    //     // Get available NDPs
+    //     $ndpDataArray = Ndp::whereNotIn('id', $filteredNdpIds)->get();
+    //     // dd($ndpDataArray);
+    //     $nursesById = [];
+    //     foreach ($nurses as $nurse) {
+    //         $nursesById[$nurse['id']] = $nurse;
+    //     }
+
         
-        // Create an array to map nurses by ID and calculate their age
-        $nursesById = [];
-        foreach ($nurses as $nurse) {
-            // Calculate the age from dob
-            $nurse->age = isset($nurse->dob) ? Carbon::parse($nurse->dob)->age : 'Not provided';
-            $nursesById[$nurse->id] = $nurse;
-        }
-        
-        // Assign nurse data to available NDPs
-        $ndps = [];
-        foreach ($ndpDataArray as $ndp) {
-            // Attach nurse data to NDPs, if exists
-            $ndp['nurse_data'] = $nursesById[$ndp['nurse_id']] ?? null;
-            $ndps[] = $ndp; 
-        }
+    //     // Assign nurse data to ndps
+    //     $ndps = [];
+    //     foreach ($ndpDataArray as $ndp) {
+    //         $ndp['nurse_data'] = $nursesById[$ndp['nurse_id']] ?? null;
+    //         $ndps[] = $ndp; 
+    //     }
     
-        // Return the view with the necessary data
-        return view('select-date', compact('ndps', 'townships', 'township_id', 'start_date', 'end_date'));
-    }
+    //     // Return the view with the data and selected values
+    //     return view('select-date', compact('ndps', 'nurses', 'townships', 'township_id', 'start_date', 'end_date'));
+    // }
+    
       
 
-    public function getInfo()
-    {
-        $townships = Township::all();
+    public function getAvailableNurses(Request $request)
+{
+    $start_date = $request->start_date;
+    $end_date = $request->end_date;
+    $township_id = (int) $request->township_id;
 
-        return view('info', compact('townships'));
+    // 1. Filter nurses by township
+    $nurses = Nurse::where('township_id', $township_id)->get();
+
+    // 2. Get the list of nurse_ids
+    $nurseIds = $nurses->pluck('id');
+
+    // 3. Filter NDPs where nurse_id matches the filtered nurseIds
+    $filteredNdpIds = Booking::where(function ($query) use ($start_date, $end_date) {
+        $query->whereBetween('from_date', [$start_date, $end_date])
+              ->orWhereBetween('to_date', [$start_date, $end_date])
+              ->orWhere(function ($query) use ($start_date, $end_date) {
+                  $query->where('from_date', '<=', $start_date)
+                        ->where('to_date', '>=', $end_date);
+              });
+    })->pluck('ndp_id');
+
+    // 4. Get available NDPs where nurse_id is in the filtered nurseIds
+    $ndps = Ndp::whereNotIn('id', $filteredNdpIds)
+                ->whereIn('nurse_id', $nurseIds)
+                ->get();
+
+    // 5. Assign nurse data to ndps
+    $nursesById = $nurses->keyBy('id'); // Re-index nurses by id for easy lookup
+    foreach ($ndps as $ndp) {
+        $ndp['nurse_data'] = $nursesById[$ndp->nurse_id] ?? null;
     }
+
+    // 6. Return the view with filtered data
+    $townships = Township::all(); // Get townships for the dropdown
+    return view('select-date', compact('ndps', 'nurses', 'townships', 'township_id', 'start_date', 'end_date'));
+}
+
+
+public function getInfo(Request $request)
+{
+    // Get the data from the form
+    $id = $request->nurseById;
+    // Debugging to check the incoming request data
+    // dd($id); // Uncomment to see the request data
+
+    // Fetch townships or any other data needed for the view
+    $townships = Township::all();
+
+    // Pass the data to the 'info' view
+    return view('info', compact('townships'));
+}
+
 
 }

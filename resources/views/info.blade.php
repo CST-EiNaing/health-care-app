@@ -5,13 +5,13 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Please Fill Info</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+            <h2>Filling Info</h2>
+            <h4>အချက်အလက်များအား မှန်ကန်စွာ ဖြည့်ပေးပါ။</h4>
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-            <form action="{{ url('/info') }}" method="post" enctype="multipart/form-data" role="form">
+            <form action="{{ url('/') }}" method="post" enctype="multipart/form-data" role="form">
                 @csrf
 
 
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-4">
+                {{-- <div class="row mt-4">
                     <!-- Select Services -->
                     <div class="col-md-12 form-group">
                         <label for="service" class="form-label"><strong>Select Type</strong></label>
@@ -146,7 +146,7 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
+                </div> --}}
 
 
 
