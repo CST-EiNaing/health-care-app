@@ -28,7 +28,7 @@
     <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="{{ asset('../assets/css/main.css') }}" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -285,10 +285,22 @@
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Za Bu Hein ရဲ့ ကျန်းမာရေး ဝန်ဆောင်မှု (Daily) နှုန်းထားများ</h2>
-                <h5>Health Care Assistant (HCA) = 15000MMK</h5>
-                <h5>Care Giver (CGV) = 18000MMK</h5>
-                <h5>Auxilliary Midwives (AMV) = 20000MMK</h5>
-                <h5>Special Nurse = 40000MMK</h5>
+                <div class=" d-flex text-center justify-content-center">
+                    <h5 class=" float-left d-flex" style="width: 300px">Health Care Assistant (HCA)</h5>
+                    <h5>= 15000MMK</h5>
+                </div>
+                <div class=" d-flex text-center justify-content-center">
+                    <h5 class=" float-left d-flex" style="width: 300px">Care Giver (CGV)</h5>
+                    <h5>= 15000MMK</h5>
+                </div>
+                <div class=" d-flex text-center justify-content-center">
+                    <h5 class=" float-left d-flex" style="width: 300px">Auxilliary Midwives (AMV)</h5>
+                    <h5>= 20000MMK</h5>
+                </div>
+                <div class=" d-flex text-center justify-content-center">
+                    <h5 class=" float-left d-flex" style="width: 300px">Special Nurse</h5>
+                    <h5>= 40000MMK</h5>
+                </div>
             </div><!-- End Section Title -->
         </section><!-- /Fees Section -->
 
@@ -309,7 +321,7 @@
                             <div class="icon">
                                 <i class="fas fa-heartbeat"></i>
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a class="stretched-link">
                                 <h3>Health Care Assistant</h3>
                             </a>
                             <p>
@@ -324,7 +336,7 @@
                             <div class="icon">
                                 <i class="fas fa-pills"></i>
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a class="stretched-link">
                                 <h3>Care Giver</h3>
                             </a>
                             <p>
@@ -341,7 +353,7 @@
                             <div class="icon">
                                 <i class="fas fa-hospital-user"></i>
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a class="stretched-link">
                                 <h3>Auxiliary Midwives (AMWs)</h3>
                             </a>
                             <p>ကိုယ်ဝန်ဆောင် မိခင်များနှင့် မွေးကင်းစ ကလေးများ
@@ -355,14 +367,14 @@
                             <div class="icon">
                                 <i class="fas fa-dna"></i>
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a class="stretched-link">
                                 <h3>Special Nurse</h3>
                             </a>
                             <p>ဆရာဝန် ညွှန်ကြားမှုဖြင့်
                                 ဆေးထိုးခြင်း၊ ဆေးသွင်းခြင်း
                                 Drip ချိတ်ခြင်း၊ နှာခေါင်းပိုက်၊ ဆီးပိုက်ထည့်ခြင်း
                                 များကို ကူညီဆောင်ရွက်ပေးသည်။</p>
-                            <a href="#" class="stretched-link"></a>
+                            <a class="stretched-link"></a>
                         </div>
                     </div><!-- End Service Item -->
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
@@ -370,7 +382,7 @@
                             <div class="icon">
                                 <i class="fas fa-hospital-user"></i>
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a class="stretched-link">
                                 <h3>Hospital</h3>
                             </a>
                             <p>မိမိတို့ ဆေးရုံအတွက်
@@ -385,7 +397,7 @@
                             <div class="icon">
                                 <i class="fas fa-hospital-user"></i>
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a class="stretched-link">
                                 <h3>Clinic</h3>
                             </a>
                             <p>မိမိတို့ ဆေးဆိုင်၊ ဆေးခန်း များအတွက်
@@ -457,7 +469,8 @@
                     <p class="d-flex justify-content-center fw-bold"> <a href="https://www.google.com/"
                             target="_blank">Za
                             Bu
-                            Hein Facebook Messenger</a> &nbsp;မှ တစ်ဆင့်
+                            Hein Facebook Messenger</a>&nbsp; <a>&</a> &nbsp;<a href="#">Viber</a> &nbsp;တို့မှ
+                        တစ်ဆင့်
                         အခမဲ့ တိုင်ပင်ဆွေးနွေး မေးမြန်းနိုင်ပါသည်။
                     </p>
                 </div>
@@ -603,39 +616,83 @@
                     <div class="col-md-4">
                         <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
                             <i class="bi bi-geo-alt"></i> <!-- Icon and Text aligned using flex -->
-                            <h3>Location</h3>
+                            <h3>Address 1</h3>
                         </div>
-                        <p>Yangon</p>
-                        <p>Mandalay</p>
-                        <p>Nay Pyi Taw</p>
+                        <div class=" mt-3 ps-2">
+                            <a href="" style=" color:#444444;"
+                                class=" d-flex align-items-center text-decoration-none gap-2 mb-2">
+                                <i class="fa fa-home"></i>
+                                <span>Yangon</span>
+                            </a>
+                            <a href="#" style="text-decoration: none; color:#444444;"
+                                class=" d-flex align-items-center gap-2 mb-2">
+                                <i class="fa fa-phone"></i>
+                                <span>+1 5589 55488 55</span>
+                            </a>
+                            <a href="#" style="text-decoration: none; color:#444444;"
+                                class=" d-flex align-items-center gap-2">
+                                <i class="fa fa-envelope"></i>
+                                <span>yangon@example.com</span>
+                            </a>
+                        </div>
                     </div><!-- End Location Column -->
 
                     <!-- Second Column: Call Us -->
                     <div class="col-md-4">
-                        <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
-                            <i class="bi bi-telephone me-2"></i> <!-- Icon and Text aligned using flex -->
-                            <h3>Call Us</h3>
+                        <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+                            <i class="bi bi-geo-alt"></i> <!-- Icon and Text aligned using flex -->
+                            <h3>Address 2</h3>
                         </div>
-                        <p>+1 5589 55488 55 (Yangon)</p>
-                        <p>+1 5589 55488 66 (Mandalay)</p>
-                        <p>+1 5589 55488 77 (Nay Pyi Taw)</p>
+                        <div class=" mt-3 ps-2">
+                            <a href="" style="text-decoration: none; color:#444444;"
+                                class=" d-flex align-items-center gap-2 mb-2">
+                                <i class="fa fa-home"></i>
+                                <span>Mandalay</span>
+                            </a>
+                            <a href="#" style="text-decoration: none; color:#444444;"
+                                class=" d-flex align-items-center gap-2 mb-2">
+                                <i class="fa fa-phone"></i>
+                                <span>+1 5589 55488 55</span>
+                            </a>
+                            <a href="#" style="text-decoration: none; color:#444444;"
+                                class=" d-flex align-items-center gap-2">
+                                <i class="fa fa-envelope"></i>
+                                <span>yangon@example.com</span>
+                            </a>
+                        </div>
                     </div><!-- End Call Us Column -->
 
                     <!-- Third Column: Email Us -->
                     <div class="col-md-4">
-                        <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
-                            <i class="bi bi-envelope me-2"></i> <!-- Icon and Text aligned using flex -->
-                            <h3>Email Us</h3>
+                        <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+                            <i class="bi bi-geo-alt"></i> <!-- Icon and Text aligned using flex -->
+                            <h3>Address 3</h3>
                         </div>
-                        <p>yangon@example.com</p>
-                        <p>mandalay@example.com</p>
-                        <p>naypyitaw@example.com</p>
+                        <div class=" mt-3 ps-2">
+                            <a href="" style="text-decoration: none; color:#444444;"
+                                class=" d-flex align-items-center gap-2 mb-2">
+                                <i class="fa fa-home"></i>
+                                <span>NayPiTaw</span>
+                            </a>
+                            <a href="#" style="text-decoration: none; color:#444444;"
+                                class=" d-flex align-items-center gap-2 mb-2">
+                                <i class="fa fa-phone"></i>
+                                <span>+1 5589 55488 55</span>
+                            </a>
+                            <a href="#" style="text-decoration: none; color:#444444;"
+                                class=" d-flex align-items-center gap-2">
+                                <i class="fa fa-envelope"></i>
+                                <span>yangon@example.com</span>
+                            </a>
+                        </div>
                     </div><!-- End Email Us Column -->
                 </div>
             </div>
         </section><!-- /Contact Section -->
     </main>
+
     @include('footer')
+
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
