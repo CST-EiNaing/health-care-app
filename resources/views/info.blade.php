@@ -22,30 +22,31 @@
                         <div class="d-flex align-items-center ">
                             <label for="name" class="form-label me-2" style="width: 150px"><strong>Name
                                     :</strong></label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Owner's Name"
-                                required>
+                            <input type="text" id="name" name="name" class="form-control"
+                                placeholder="Owner's Name" required>
                         </div>
 
 
                         <div class="d-flex align-items-center mt-4">
                             <label for="nrc" class="form-label me-2" style="width: 150px"><strong>NRC
                                     :</strong></label>
-                            <input type="text" name="nrc" id="nrc" class="form-control" placeholder="NRC's Name" required>
+                            <input type="text" name="nrc" id="nrc" class="form-control"
+                                placeholder="NRC's Name" required>
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
                             <label for="father_name" class="form-label me-2" style="width: 150px"><strong>Father's Name
                                     :</strong></label>
-                            <input type="text" name="father_name" id="father_name" class="form-control" placeholder="Father's Name"
-                                required>
+                            <input type="text" name="father_name" id="father_name" class="form-control"
+                                placeholder="Father's Name" required>
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
                             <label for="relative" class="form-label me-2" style="width: 150px"><strong>
                                     Relative
                                     :</strong></label>
-                            <input type="text" name="relative" id="relative" class="form-control" placeholder="Patient's Relative"
-                                required>
+                            <input type="text" name="relative" id="relative" class="form-control"
+                                placeholder="Patient's Relative" required>
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
@@ -62,8 +63,8 @@
                         <div class="d-flex align-items-center mt-4">
                             <label for="address" class="form-label me-2" style="width: 150px"><strong>Address :
                                 </strong></label>
-                            <input type="text" name="address" id="address" class="form-control" placeholder="Your Addresss"
-                                required>
+                            <input type="text" name="address" id="address" class="form-control"
+                                placeholder="Your Addresss" required>
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
@@ -78,22 +79,26 @@
                         <h4 class=" text-center mb-3">Patient's Info</h4>
                         <div class="remove-border border-start border-primary ps-3">
                             <div class=" d-flex align-items-center">
-                                <label for="township" class="form-label" style="width: 150px"><strong>Township</strong></label>
-                                <input type="text" name="township" id="township" class="form-control" value="Yangon" readonly>
+                                <label for="township" class="form-label"
+                                    style="width: 150px"><strong>Township</strong></label>
+                                <input type="text" name="township" id="township" class="form-control" value="Yangon"
+                                    readonly>
                             </div>
                             <div class="d-flex align-items-center mt-4">
                                 <label for="name" class="form-label me-2" style="width: 150px"><strong>Name
                                         :</strong></label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Patient's Name" required>
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="Patient's Name" required>
                             </div>
-    
-    
+
+
                             <div class="d-flex align-items-center mt-4">
                                 <label for="age" class="form-label me-2" style="width: 150px"><strong>Age
                                         :</strong></label>
-                                <input type="number" name="age" id="age" class="form-control" placeholder="Patient's Age" required>
+                                <input type="number" name="age" id="age" class="form-control"
+                                    placeholder="Patient's Age" required>
                             </div>
-    
+
                             <div class="d-flex align-items-center mt-4">
                                 <label for="gender" class="form-label me-2"
                                     style="width: 150px"><strong>Gender:</strong></label>
@@ -102,14 +107,15 @@
                                     <option value="female">Female</option>
                                 </select>
                             </div>
-    
-    
+
+
                             <div class="d-flex align-items-center mt-4">
                                 <label for="diagnotic" class="form-label me-2" style="width: 150px"><strong>Diagnotic
                                         :</strong></label>
-                                <input type="text" name="diagnotic" id="diagnotic" class="form-control" placeholder="diagnotic" required>
+                                <input type="text" name="diagnotic" id="diagnotic" class="form-control"
+                                    placeholder="diagnotic" required>
                             </div>
-    
+
                             <div class="d-flex align-items-center mt-4">
                                 <label for="phone" class="form-label me-2" style="width: 150px"><strong>Phone :
                                     </strong></label>
@@ -120,44 +126,31 @@
                                 style="font-size: 15px; display: none;">Please enter
                                 a valid phone
                                 number!</p>
-    
+
                             <div class="d-flex align-items-center mt-4">
                                 <label for="address" class="form-label me-2" style="width: 150px"><strong>Address :
                                     </strong></label>
-                                <input type="text" name="address" id="address" class="form-control" placeholder="Your Addresss"
-                                    required>
+                                <input type="text" name="address" id="address" class="form-control"
+                                    placeholder="Your Addresss" required>
                             </div>
-    
+
                             <div class="d-flex align-items-center mt-4">
                                 <label for="remark" class="form-label me-2" style="width: 150px"><strong>Remark
                                         :</strong></label>
-                                <input type="text" name="remark" id="remark" class="form-control" placeholder="remark">
+                                <input type="text" name="remark" id="remark" class="form-control"
+                                    placeholder="remark">
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- <div class="row mt-4">
-                    <!-- Select Services -->
-                    <div class="col-md-12 form-group">
-                        <label for="service" class="form-label"><strong>Select Type</strong></label>
-                        <select name="township" id="service" class="form-select">
-                            @foreach ($townships as $township)
-                                <option value="{{ $township->id }}">{{ $township->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div> --}}
 
 
 
                 <div class="mt-4">
-                    {{-- <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div> --}}
                     <div class="text-center"><button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>
-            </form> 
+            </form>
         </div>
 
     </section>

@@ -1241,10 +1241,10 @@ section,
 }
 
 @media (max-width: 786px) {
-  .appointment .php-email-form .remove-border {
-    border-right: none !important;
+  .appointment .remove-border {
+    border-left: none !important;
     border-color: transparent !important;
-    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
   }
 
@@ -1671,15 +1671,15 @@ section,
 .contact .info-item i {
   color: var(--contrast-color);
   background: var(--accent-color);
-  font-size: 20px;
-  width: 44px;
-  height: 44px;
+  font-size: 15px;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50px;
   transition: all 0.3s ease-in-out;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .contact .info-item h3 {
