@@ -10,13 +10,19 @@
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <form action="{{ url('/') }}" method="post" enctype="multipart/form-data" role="form">
+            <form action="{{ url('/save-patient') }}" method="post" enctype="multipart/form-data" role="form">
                 @csrf
-
-
                 <div class="row">
-                    <!-- Owner -->
+                    <!-- From Date -->
+                    <div class="col-md-6 form-group mt-3">
+                        <label for="start_date" class="form-label"><strong>From Date:</strong></label>
+                        <input name="start_date" value="{{ $start_date }}" class="form-control" id="start_date" readonly>
+                    </div>
+                    <!-- To Date -->
+                    <div class="col-md-6 form-group mt-3">
+                        <label for="end_date" class="form-label"><strong>To Date:</strong></label>
+                        <input name="end_date" value="{{ $end_date }}" class="form-control" id="end_date" readonly>
+                    </div>
                     <div class="col-md-6 form-group mt-3 pe-2">
                         <h4 class=" text-center mb-3">Owner's Info</h4>
                         <div class="d-flex align-items-center ">
@@ -25,8 +31,6 @@
                             <input type="text" id="name" name="name" class="form-control"
                                 placeholder="Owner's Name" required>
                         </div>
-
-
                         <div class="d-flex align-items-center mt-4">
                             <label for="nrc" class="form-label me-2" style="width: 150px"><strong>NRC
                                     :</strong></label>
@@ -56,7 +60,8 @@
                                 id="phone" required>
                         </div>
                         <p id="phone-error" class=" text-danger mt-2 text-sm-center"
-                            style="font-size: 15px; display: none;">Please enter
+                            style="font-size: 15px; display: none;">Please
+                            enter
                             a valid phone
                             number!</p>
 
@@ -79,10 +84,10 @@
                         <h4 class=" text-center mb-3">Patient's Info</h4>
                         <div class="remove-border border-start border-primary ps-3">
                             <div class=" d-flex align-items-center">
-                                <label for="township" class="form-label"
-                                    style="width: 150px"><strong>Township</strong></label>
-                                <input type="text" name="township" id="township" class="form-control" value="Yangon"
-                                    readonly>
+                                <label for="township" class="form-label" style="width: 150px"><strong>Medical
+                                        Center</strong></label>
+                                <input type="text" name="township" id="township" class="form-control"
+                                    value="{{ $township->name }}" readonly>
                             </div>
                             <div class="d-flex align-items-center mt-4">
                                 <label for="name" class="form-label me-2" style="width: 150px"><strong>Name
@@ -123,7 +128,8 @@
                                     id="phone" required>
                             </div>
                             <p id="phone-error" class=" text-danger mt-2 text-sm-center"
-                                style="font-size: 15px; display: none;">Please enter
+                                style="font-size: 15px; display: none;">
+                                Please enter
                                 a valid phone
                                 number!</p>
 

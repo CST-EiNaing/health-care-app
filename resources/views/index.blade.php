@@ -42,10 +42,9 @@
                     <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
                 </div>
                 <div class="social-links d-none d-md-flex align-items-center">
-                    <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    <a href=""><i class="bi bi-whatsapp"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-messenger"></i></a>
                 </div>
             </div>
         </div>
@@ -281,7 +280,7 @@
         </section><!-- /About Section -->
 
         <!-- Fees Section -->
-        <section id="services" class="services section">
+        <section id="about" class="services section">
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Za Bu Hein ရဲ့ ကျန်းမာရေး ဝန်ဆောင်မှု (Daily) နှုန်းထားများ</h2>
@@ -613,7 +612,7 @@
 
                 <div class="row">
                     <!-- First Column: Locations -->
-                    <div class="col-md-4">
+                    <div class=" col-lg-4 col-md-6 mt-3">
                         <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
                             <i class="bi bi-geo-alt"></i> <!-- Icon and Text aligned using flex -->
                             <h3>Address 1</h3>
@@ -638,7 +637,7 @@
                     </div><!-- End Location Column -->
 
                     <!-- Second Column: Call Us -->
-                    <div class="col-md-4">
+                    <div class=" col-lg-4 col-md-6 mt-3">
                         <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
                             <i class="bi bi-geo-alt"></i> <!-- Icon and Text aligned using flex -->
                             <h3>Address 2</h3>
@@ -663,7 +662,7 @@
                     </div><!-- End Call Us Column -->
 
                     <!-- Third Column: Email Us -->
-                    <div class="col-md-4">
+                    <div class=" col-lg-4 col-md-6 mt-3">
                         <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
                             <i class="bi bi-geo-alt"></i> <!-- Icon and Text aligned using flex -->
                             <h3>Address 3</h3>

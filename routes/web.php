@@ -22,14 +22,14 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [App\Http\Controllers\UserViewController::class, 'getNurseLists']);
 //select-date
-Route::get('/appointment', [App\Http\Controllers\UserViewController::class, 'getAppointments'])->name('appointment');
+Route::get('/appointment', [App\Http\Controllers\UserViewController::class, 'getAvailableNurses']);
 Route::post('/check-appointment', [App\Http\Controllers\UserViewController::class, 'getAvailableNurses']);
 //info
-Route::get('/info/nurse/{id}', [UserViewController::class, 'getInfo']);
+Route::get('/info/nurse/{id}/{start_date}/{end_date}', [UserViewController::class, 'showPatientInfo']);
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Township
 Route::get('/admin/township/list', [App\Http\Controllers\TownshipController::class, 'listTownship'])->middleware('auth');
