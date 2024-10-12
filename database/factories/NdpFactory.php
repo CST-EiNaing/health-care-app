@@ -10,22 +10,9 @@ class NdpFactory extends Factory
     protected static $positionCounter = 0; // Counter for position_id
     protected static $descriptionCounter = 0; // Counter for description
     protected static $nurseCounter = 0; // Counter for nurse_id
-    protected static $manualInserted = false; // Track manual insertion
 
     public function definition()
     {
-        // Check if we haven't inserted the manual data yet
-        if (!self::$manualInserted) {
-            self::$manualInserted = true; // Ensure manual data is inserted only once
-            return [
-                'nurse_id'    => 2,
-                'duty_id'     => 2,
-                'position_id' => 1,
-                'description' => 'Daily (HCA)',
-                'fee'         => 15000,
-            ];
-        }
-
         $data = [
             ['description' => 'Daily (HCA)', 'fee' => 15000],
             ['description' => 'Daily (AMW)', 'fee' => 18000],
@@ -42,22 +29,22 @@ class NdpFactory extends Factory
         self::$descriptionCounter++;
 
         // Generate duty_id pattern: 1,1,1,1,2,2,2,2
-        $dutyId = floor(self::$dutyCounter / 4) + 1; // Four 1's, then four 2's
+        $dutyId = floor(self::$dutyCounter / 4) + 1;
         if ($dutyId > 2) {
-            $dutyId = 2; // Ensure that after 2 it stays as 2
+            $dutyId = 2; // Ensure it stays as 2 after reaching it
         }
-        self::$dutyCounter++; // Increment duty counter
+        self::$dutyCounter++;
 
         // Get the current index for position_id (cycle between 1 and 4)
         $positionId = self::$positionCounter % 4 + 1;
-        self::$positionCounter++; // Increment position counter
+        self::$positionCounter++;
 
-        // Cycle nurse_id from 1 to 4, repeating each one 8 times
-        $nurseId = floor(self::$nurseCounter / 8) + 1; // Each nurse_id will repeat 8 times
-        if ($nurseId > 4) {
-            $nurseId = 4; // Ensure it does not exceed the maximum
+        // Cycle nurse_id from 1 to 7, repeating each one 8 times
+        $nurseId = floor(self::$nurseCounter / 8) + 1;
+        if ($nurseId > 7) {
+            $nurseId = 7; // Ensure it does not exceed 7
         }
-        self::$nurseCounter++; // Increment nurse counter
+        self::$nurseCounter++;
 
         return [
             'nurse_id'    => $nurseId,
