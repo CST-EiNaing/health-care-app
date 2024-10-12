@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
         Nurse::factory()->count(7)->create();
 
         // NDP
-        Ndp::factory()->count(8)->create();
+        Ndp::factory()->count(56)->create();
 
         //Payment Method
         $this->call(PaymentMethodSeeder::class);
