@@ -737,7 +737,7 @@
 
             // HTML structure for nurse card
             nurseCard.innerHTML = `
-           <div class="team-member">
+           <div class="team-member" style="height: 300px;">
                <div class=" d-flex align-items-start mb-2">
                    <div class="pic">
                        <img src="${nurseImage}" alt="${nurse.name}" class="img-fluid">
@@ -769,7 +769,7 @@
                </div>
                <div class=' experience mb-2'>
                    <p style='color: red; display: inline'>*</p> 
-                   လုပ်ငန်း အတွေ့အကြုံ <strong>နှစ်နှစ်</strong> နှင့် အထက် ရှိသူများသာ ဖြစ်သည်။ 
+                   လုပ်ငန်း အတွေ့အကြုံ <strong>${nurse.remark} နှစ်</strong> နှင့် အထက် ရှိသူများသာ ဖြစ်သည်။ 
                    <p style='color: red; display: inline'>*</p>
                </div>
            </div>

@@ -33,6 +33,7 @@ class NurseFactory extends Factory
             'member_code' => strtoupper($this->faker->bothify('NUR###??')),
             'daily_fee' => 1,
             'vip_fee' => 50,
+            'remark' => $this->faker->numberBetween(1,3),
         ];
     }
 }
