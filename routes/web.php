@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -31,6 +32,9 @@ Route::post('/check-appointment', [App\Http\Controllers\UserViewController::clas
 Route::get('/info/nurse/{id}/{start_date}/{end_date}', [UserViewController::class, 'showPatientInfo']);
 Route::post('/save-patient-info', [UserViewController::class, 'createPatientInfo']);
 
+Route::get('/payment', function () {
+    return view('payment');
+});
 //Township
 Route::get('/admin/township/list', [App\Http\Controllers\TownshipController::class, 'listTownship'])->middleware('auth');
 Route::post('/admin/township/add', [App\Http\Controllers\TownshipController::class, 'createTownship'])->middleware('auth');
