@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DutyController;
 use App\Http\Controllers\NdpController;
+use App\Http\Controllers\BookingSuccessController;
 use App\Http\Controllers\NurseController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\UserViewController;
@@ -31,9 +32,11 @@ Route::post('/check-appointment', [App\Http\Controllers\UserViewController::clas
 Route::get('/info/nurse', [UserViewController::class, 'showPatientInfo']);
 Route::post('/save-patient-info', [UserViewController::class, 'createPatientInfo']);
 
-Route::get('/payment', function () {
-    return view('payment');
-});
+//booking-success
+Route::get('/success-booking',[BookingSuccessController::class, 'showBookingSuccess']); 
+
+//payment
+Route::get('/payment',[App\Http\Controllers\UserPaymentController::class, 'getQR']); 
 //Township
 Route::get('/admin/township/list', [App\Http\Controllers\TownshipController::class, 'listTownship'])->middleware('auth');
 Route::post('/admin/township/add', [App\Http\Controllers\TownshipController::class, 'createTownship'])->middleware('auth');

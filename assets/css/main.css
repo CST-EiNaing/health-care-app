@@ -1248,6 +1248,13 @@ section,
   }
   }
 
+  @media (max-width: 600px) {
+    .appointment .payment-details img {
+      width: 100% !important;  /* Adjust the width for small screens */
+      height: auto !important; /* Adjust the height for small screens */
+    }
+  }
+
 /*--------------------------------------------------------------
 # Departments Section
 --------------------------------------------------------------*/
