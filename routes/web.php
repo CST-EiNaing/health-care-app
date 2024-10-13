@@ -19,17 +19,17 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [App\Http\Controllers\UserViewController::class, 'getNurseLists']);
 //select-date
 Route::get('/appointment', [App\Http\Controllers\UserViewController::class, 'getAvailableNurses']);
 Route::post('/check-appointment', [App\Http\Controllers\UserViewController::class, 'getAvailableNurses']);
+
 //info
 Route::get('/info/nurse/{id}/{start_date}/{end_date}', [UserViewController::class, 'showPatientInfo']);
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/save-patient-info', [UserViewController::class, 'createPatientInfo']);
 
 //Township
 Route::get('/admin/township/list', [App\Http\Controllers\TownshipController::class, 'listTownship'])->middleware('auth');
@@ -47,7 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/duty/upd/{id}', [DutyController::class, 'updDuty']);
     Route::post('/admin/duty/upd/{id}', [DutyController::class, 'updateDuty']);
 });
-//
 
 //Position
 Route::middleware('auth')->group(function () {
