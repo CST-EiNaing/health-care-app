@@ -29,7 +29,7 @@ class OwnerController extends Controller
             ]
         );
         if ($validator->fails()) {
-            return back()->with('info', "Please Enter the Data!");
+            return back()->with('info_danger', "Please Enter the Data!");
         }
 
         $owner = new Owner();
@@ -46,7 +46,7 @@ class OwnerController extends Controller
         $owner->save();
 
 
-        return back()->with('info', 'New Owner added Successfully!');
+        return back()->with('info_success', 'New Owner added Successfully!');
     }
     public function deleteOwner()
     {
@@ -55,7 +55,7 @@ class OwnerController extends Controller
 
         Owner::find($id)->delete();
 
-        return redirect('/admin/owner/list')->with('info', 'Owner Deleted Successfully!');
+        return redirect('/admin/owner/list')->with('info_danger', 'Owner Deleted Successfully!');
     }
     public function updOwner()
     {
@@ -77,7 +77,7 @@ class OwnerController extends Controller
             ]
         );
         if ($validator->fails()) {
-            return back()->with('info', "Please Enter the Data!");
+            return back()->with('info_danger', "Please Enter the Data!");
         }
 
 
@@ -93,6 +93,6 @@ class OwnerController extends Controller
         $owner->remark = request()->remark;
 
         $owner->save();
-        return redirect('/admin/owner/list')->with('info', 'Owner Updated Successfully!');
+        return redirect('/admin/owner/list')->with('info_success', 'Owner Updated Successfully!');
     }
 }

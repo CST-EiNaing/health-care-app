@@ -24,19 +24,22 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', [App\Http\Controllers\UserViewController::class, 'getNurseLists']);
+
 //select-date
 Route::get('/appointment', [App\Http\Controllers\UserViewController::class, 'getAvailableNurses']);
 Route::post('/check-appointment', [App\Http\Controllers\UserViewController::class, 'getAvailableNurses']);
 
 //info
 Route::get('/info/nurse', [UserViewController::class, 'showPatientInfo']);
-Route::post('/save-patient-info', [UserViewController::class, 'createPatientInfo']);
+Route::post('/success-booking', [UserViewController::class, 'createPatientInfo']);
 
 //booking-success
-Route::get('/success-booking',[BookingSuccessController::class, 'showBookingSuccess']); 
+// Route::get('/success-booking',[BookingSuccessController::class, 'showBookingSuccess']); 
 
 //payment
-Route::get('/payment',[App\Http\Controllers\UserPaymentController::class, 'getQR']); 
+Route::post('/payment',[App\Http\Controllers\UserPaymentController::class, 'getQR']); 
+Route::post('/success-payment',[App\Http\Controllers\UserPaymentController::class, 'completePayment']); 
+
 //Township
 Route::get('/admin/township/list', [App\Http\Controllers\TownshipController::class, 'listTownship'])->middleware('auth');
 Route::post('/admin/township/add', [App\Http\Controllers\TownshipController::class, 'createTownship'])->middleware('auth');
