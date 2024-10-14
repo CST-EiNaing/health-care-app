@@ -56,7 +56,7 @@ class UserViewController extends Controller
             })->pluck('ndp_id');
             $filterNurseIds = [];
             if ($filteredNdpIds->isNotEmpty()) {
-                $nurseByNdp = Ndp::where('id', $filteredNdpIds)->distinct()->pluck('nurse_id')->toArray();
+                $nurseByNdp = Ndp::where('id', $filteredNdpIds)->pluck('nurse_id')->toArray();
                 $filterNurseIds = array_diff($nurseIds, $nurseByNdp);
             } else {
                 $filterNurseIds = $nurseIds;
@@ -104,7 +104,7 @@ class UserViewController extends Controller
             })->pluck('ndp_id');
             $filterNurseIds = [];
             if ($filteredNdpIds->isNotEmpty()) {
-                $nurseByNdp = Ndp::where('id', $filteredNdpIds)->distinct()->pluck('nurse_id')->toArray();
+                $nurseByNdp = Ndp::where('id', $filteredNdpIds)->pluck('nurse_id')->toArray();
                 $filterNurseIds = array_diff($nurseIds, $nurseByNdp);
             } else {
                 $filterNurseIds = $nurseIds;
@@ -147,15 +147,15 @@ class UserViewController extends Controller
         $start_date = $request->start_date;
         $end_date =  $request->end_date;
         $township = Township::where('id', $township_id)->first();
-        return view('info', compact('township_id','nurse_id','ndp_id','township', 'start_date', 'end_date'));
+        return view('info', compact('township_id', 'nurse_id', 'ndp_id', 'township', 'start_date', 'end_date'));
     }
 
     public function createPatientInfo(Request $request)
-    {   
+    {
 
         $validator = validator(
             request()->all(),
-            [   
+            [
                 'start_date' => "required",
                 'end_date' => "required",
                 'township_id' => "required",
@@ -177,7 +177,7 @@ class UserViewController extends Controller
             ]
         );
         if ($validator->fails()) {
-            return back()->with('info', "Please Enter the Data!");
+            return back()->with('info_danger', "Please Enter the Data Perfectly!");
         }
         $owner = new Owner();
         $patient = new Patient();
@@ -191,8 +191,8 @@ class UserViewController extends Controller
         $owner->status = request()->status ?? '';
         $owner->remark = request()->remark ?? '';
         $owner->save();
-        if($owner){
-            $savedOwnerId = $owner->id;   
+        if ($owner) {
+            $savedOwnerId = $owner->id;
             $patient->owner_id = $savedOwnerId;
             $patient->township_id = request()->township_id;
             $patient->name = request()->patient_name;
@@ -204,7 +204,7 @@ class UserViewController extends Controller
             $patient->status = request()->status ?? '';
             $patient->remark = request()->remark ?? '';
             $patient->save();
-            if($patient){
+            if ($patient) {
                 $savedPatientId = $patient->id;
                 $booking->owner_id = $savedOwnerId;
                 $booking->patient_id = $savedPatientId;
@@ -222,13 +222,13 @@ class UserViewController extends Controller
                 } elseif ($ndp->duty_id == 2) {
                     $months = Carbon::parse($booking->from_date)->diffInMonths(Carbon::parse($booking->to_date));
                     $booking->nurse_fee = $months * $ndp->fee;
-                    $booking->nurse_profit = $booking->nurse_fee * 0.5; 
+                    $booking->nurse_profit = $booking->nurse_fee * 0.5;
                 }
                 $booking->total = $booking->service_fee + $booking->nurse_fee;
                 $booking->total_income = $booking->service_fee + $booking->nurse_profit;
                 $booking->save();
-            } 
+            }
         }
-        return view('user-booking-success', compact('booking'));
+        return view('user-booking-success', compact('booking'))->with('info_success', 'Success! Your booking was completed successfully! Thank you for choosing us.');
     }
 }
