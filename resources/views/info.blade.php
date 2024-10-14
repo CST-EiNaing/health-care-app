@@ -14,6 +14,8 @@
                 @csrf
                 <div class="row">
                     <!-- From Date -->
+                    <input type="hidden" name="ndp_id" value="{{ $ndp_id }}" class="form-control" id="ndp_id" readonly>
+                    <input type="hidden" name="township_id" value="{{ $township_id }}" class="form-control" id="ndp_id" readonly>
                     <div class="col-md-6 form-group mt-3">
                         <label for="start_date" class="form-label"><strong>From Date:</strong></label>
                         <input name="start_date" value="{{ $start_date }}" class="form-control" id="start_date" readonly>
@@ -46,10 +48,10 @@
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
-                            <label for="relative" class="form-label me-2" style="width: 150px"><strong>
+                            <label for="patient_relative" class="form-label me-2" style="width: 150px"><strong>
                                     Relative
                                     :</strong></label>
-                            <input type="text" name="relative" id="relative" class="form-control"
+                            <input type="text" name="patient_relative" id="patient_relative" class="form-control"
                                 placeholder="Patient's Relative" required>
                         </div>
 
@@ -64,7 +66,6 @@
                             enter
                             a valid phone
                             number!</p>
-
                         <div class="d-flex align-items-center mt-4">
                             <label for="owner_address" class="form-label me-2" style="width: 150px"><strong>Address :
                                 </strong></label>
@@ -82,9 +83,9 @@
                         <h4 class=" text-center mb-3">Patient's Info</h4>
                         <div class="remove-border border-start border-primary ps-3">
                             <div class=" d-flex align-items-center">
-                                <label for="township_id" class="form-label" style="width: 150px"><strong>Medical
+                                <label for="township" class="form-label" style="width: 150px"><strong>Medical
                                         Center</strong></label>
-                                <input type="text" name="township_id" id="township_id" class="form-control"
+                                <input type="text" name="township" id="township" class="form-control"
                                     value="{{ $township->name }}" readonly>
                             </div>
                             <div class="d-flex align-items-center mt-4">
@@ -142,7 +143,6 @@
                 </div>
                 <div class="mt-4">
                     <div class="text-center"><button type="submit" class="btn btn-primary">Save</button>
-                    </div>
                 </div>
             </form>
         </div>

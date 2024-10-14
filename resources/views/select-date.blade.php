@@ -15,7 +15,8 @@
                         <select name="township_id" id="service" class="form-select" required>
                             @foreach ($townships as $township)
                                 <option value="{{ $township->id }}" @if (old('township_id', $township_id ?? '') == $township->id) selected @endif>
-                                    {{ $township->name }}</option>
+                                    {{ $township->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -43,6 +44,12 @@
                 <div class="container">
                     <div class="row gy-4" style="height: 638px; scroll-behavior: smooth; overflow: scroll;">
                         @foreach ($filterNurses as $nurse)
+                        <form action="{{ url('/info/nurse') }}" method="get" enctype="multipart/form-data" role="form">
+                         @csrf
+                            <input type="hidden" name="start_date" class="form-control" value="{{ $start_date }}">
+                            <input type="hidden" name="end_date" class="form-control" value="{{ $end_date }}">
+                            <input type="hidden" name="township_id" class="form-control" value="{{ $township_id }}">
+                            <input type="hidden" name="nurse_id" class="form-control" value="{{ $nurse['id'] }}">
                             <div class="col-lg-6">
                                 <div class="team-member" style="height:370px;">
                                     <div class="d-flex align-items-start mb-2">
@@ -57,7 +64,6 @@
                                         </div>
                                         <div class="member-info">
                                             <h4>{{ $nurse['name'] ?? 'Not provided' }}</h4>
-
                                             <!-- Age and Township -->
                                             <div class="info-pairalign-items-center gap-3 mb-2">
                                                 <p><strong>Township:
@@ -76,27 +82,22 @@
                                         ဖြစ်သည်။
                                         <p style="color: red; display: inline">*</p>
                                     </div>
-                                    <!-- Dropdown for Nurse NDPs -->
-                                    <div class="mb-2">
-                                        <p style="color: red; display: inline">*</p>
-                                        ကျေးဇူးပြု၍ ငှားရမ်းလိုသည့် ပုံစံအား ရွေးချယ်ပေးပါ
-                                        <p style="color: red; display: inline">*</p>
-                                    </div>
-                                    <select class="form-select mb-2" name="nurse_ndp" id="nurse_ndp" required>
+                                    <select class="form-select mb-2" name="ndp_id" id="ndp_id" required>
                                         <option value="" disabled selected>Select Nurse's Description</option>
                                         @foreach ($nurse['ndp'] as $ndp)
                                             <option value="{{ $ndp->id }}">
-                                                {{ $ndp->description }}
+                                                {{ $ndp->id }} {{ $ndp->description }} {{ $nurse['id'] }}
                                             </option>
                                         @endforeach
                                     </select>
                                     <div class="d-flex justify-content-end">
-                                        <a href="{{ url("/info/nurse/{$nurse['id']}/{$start_date}/{$end_date}") }}"
-                                            class="btn btn-primary mt-2 book-now-btn"
-                                            data-nurse-id="{{ $nurse['id'] }}">Book Now</a>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary mt-2 book-now-btn">Book Now</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </form>
                         @endforeach
                     </div>
                 </div>
@@ -126,24 +127,22 @@
     document.addEventListener("DOMContentLoaded", function() {
         // Get all the "Book Now" buttons
         const bookNowButtons = document.querySelectorAll(".book-now-btn");
-
         // Initialize the Bootstrap modal
         const nurseModal = new bootstrap.Modal(document.getElementById("nurseModal"));
-
         bookNowButtons.forEach(button => {
             button.addEventListener("click", function(event) {
                 // Get the nurse_ndp dropdown for the current nurse
                 const nurseNdpDropdown = this.closest(".team-member").querySelector(
-                    "select[name='nurse_ndp']");
-
+                    "select[id='nurse_ndp']");
                 if (!nurseNdpDropdown.value) {
                     // Prevent the default link action
                     event.preventDefault();
-
                     // Show the modal instead of an alert
                     nurseModal.show();
                 }
             });
         });
     });
+
+
 </script>

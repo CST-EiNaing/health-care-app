@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Township;
 use App\Models\Nurse;
 use App\Models\Booking;
+use App\Models\Owner;
+use App\Models\Patient;
+use App\Models\Duty;
 use Carbon\Carbon;
 
 class UserViewController extends Controller
@@ -26,7 +29,6 @@ class UserViewController extends Controller
     }
     public function getAppointments()
     {
-
         $ndps = Ndp::select('id', 'description')->get();
         $nurses = Nurse::select('id', 'name')->get();
         $townships = Township::all();
@@ -139,11 +141,94 @@ class UserViewController extends Controller
 
     public function showPatientInfo(Request $request)
     {
-        $township_id = (int) $request->id;
+        $township_id = (int) $request->township_id;
+        $nurse_id = (int) $request->nurse_id;
+        $ndp_id = (int) $request->ndp_id;
         $start_date = $request->start_date;
         $end_date =  $request->end_date;
         $township = Township::where('id', $township_id)->first();
-        return view('info', compact('township_id', 'township', 'start_date', 'end_date'));
+        return view('info', compact('township_id','nurse_id','ndp_id','township', 'start_date', 'end_date'));
     }
 
+    public function createPatientInfo(Request $request)
+    {   
+
+        $validator = validator(
+            request()->all(),
+            [   
+                'start_date' => "required",
+                'end_date' => "required",
+                'township_id' => "required",
+                'ndp_id' => "required",
+
+                'owner_name' => "required",
+                'owner_nrc' => "required",
+                'owner_father_name' => "required",
+                'patient_relative' => "required",
+                'owner_phone' => "required",
+                'owner_address' => "required",
+
+                'patient_name' => "required",
+                'patient_age' => "required",
+                'gender' => "required",
+                'diagnotic' => "required",
+                'patient_phone' => "required",
+                'patient_address' => "required",
+            ]
+        );
+        if ($validator->fails()) {
+            return back()->with('info', "Please Enter the Data!");
+        }
+        $owner = new Owner();
+        $patient = new Patient();
+        $booking = new Booking();
+        $owner->name = request()->owner_name;
+        $owner->nrc = request()->owner_nrc;
+        $owner->father_name = request()->owner_father_name;
+        $owner->patient_relative = request()->patient_relative;
+        $owner->phone = request()->owner_phone;
+        $owner->address = request()->owner_address;
+        $owner->status = request()->status ?? '';
+        $owner->remark = request()->remark ?? '';
+        $owner->save();
+        if($owner){
+            $savedOwnerId = $owner->id;   
+            $patient->owner_id = $savedOwnerId;
+            $patient->township_id = request()->township_id;
+            $patient->name = request()->patient_name;
+            $patient->age = request()->patient_age;
+            $patient->gender = request()->gender;
+            $patient->diagnotic = request()->diagnotic;
+            $patient->phone = request()->patient_phone;
+            $patient->address = request()->patient_address;
+            $patient->status = request()->status ?? '';
+            $patient->remark = request()->remark ?? '';
+            $patient->save();
+            if($patient){
+                $savedPatientId = $patient->id;
+                $booking->owner_id = $savedOwnerId;
+                $booking->patient_id = $savedPatientId;
+                $booking->ndp_id = request()->ndp_id;
+                $booking->from_date = request()->start_date;
+                $booking->to_date = request()->end_date;
+
+                $ndp = Ndp::find(request()->ndp_id);
+                $duty = Duty::find($ndp['duty_id']);
+                $booking->service_fee = $duty['fee'];
+                if ($ndp->duty_id == 1) {
+                    $days = Carbon::parse($booking->from_date)->diffInDays(Carbon::parse($booking->to_date)) + 1;
+                    $booking->nurse_fee = $days * $ndp->fee;
+                    $booking->nurse_profit = $ndp->fee;
+                } elseif ($ndp->duty_id == 2) {
+                    $months = Carbon::parse($booking->from_date)->diffInMonths(Carbon::parse($booking->to_date));
+                    $booking->nurse_fee = $months * $ndp->fee;
+                    $booking->nurse_profit = $booking->nurse_fee * 0.5; 
+                }
+                $booking->total = $booking->service_fee + $booking->nurse_fee;
+                $booking->total_income = $booking->service_fee + $booking->nurse_profit;
+                $booking->save();
+            } 
+        }
+        return view('user-booking-success', compact('booking'));
+    }
 }

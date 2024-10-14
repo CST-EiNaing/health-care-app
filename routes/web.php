@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -29,7 +28,7 @@ Route::get('/appointment', [App\Http\Controllers\UserViewController::class, 'get
 Route::post('/check-appointment', [App\Http\Controllers\UserViewController::class, 'getAvailableNurses']);
 
 //info
-Route::get('/info/nurse/{id}/{start_date}/{end_date}', [UserViewController::class, 'showPatientInfo']);
+Route::get('/info/nurse', [UserViewController::class, 'showPatientInfo']);
 Route::post('/save-patient-info', [UserViewController::class, 'createPatientInfo']);
 
 Route::get('/payment', function () {
