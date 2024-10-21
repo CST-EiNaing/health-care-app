@@ -58,14 +58,14 @@
                     <!-- Total Amount -->
                     <div class="d-flex align-items-center mt-4">
                         <label for="total" class="form-label me-2" style="width: 250px"><strong>Total Amount:</strong></label>
-                        <input type="text" name="total" id="total" value="{{ $total }}" class="form-control" readonly>
+                        <input type="text" name="amount" id="total" value="{{ $total }}" class="form-control" readonly>
                     </div>
 
                     <!-- Amount to Pay -->
-                    <div class="d-flex align-items-center mt-4">
+                    {{-- <div class="d-flex align-items-center mt-4">
                         <label for="amount" class="form-label me-2" style="width: 250px"><strong>Amount To Pay: <span style="color: red">*</span></strong></label>
                         <input type="text" name="amount" class="form-control" id="amount" required>
-                    </div>
+                    </div> --}}
 
                     <!-- Remarks -->
                     <div class="d-flex align-items-center mt-4">

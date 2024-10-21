@@ -1330,6 +1330,28 @@ section,
   height: 100%;
 }
 
+/* Custom scrollbar for #nurse-container */
+/* width */
+#nurse-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+#nurse-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+#nurse-container::-webkit-scrollbar-thumb {
+  background: var(--nav-hover-color);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+#nurse-container::-webkit-scrollbar-thumb:hover {
+  background: var(--nav-dropdown-hover-color);
+}
+
 @media (max-width: 468px) {
   .doctors .team-member {
     flex-direction: column;

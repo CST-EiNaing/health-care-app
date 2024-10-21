@@ -29,8 +29,25 @@ class UserPaymentController extends Controller
         ]);
     }
 
-    public function completePayment()
+    public function completePayment(Request $request)
     {
-        
+        $validator = validator(
+            request()->all(),
+            [
+                'booking_id' => "required",
+                'payment_method_id' => "required",
+                'amount' => "required",
+            ]
+        );
+        if ($validator->fails()) {
+            return back()->with('info_danger', "Please Enter the Data!");
+        }
+        $payment = new Payment();
+        $payment->booking_id = request()->booking_id;
+        $payment->payment_method_id = request()->payment_method_id;
+        $payment->amount = request()->amount;
+        $payment->remark = request()->remark;
+        $payment->save();
+        return view('payment-success')->with('info_success', 'Payment Completed Successfully!');
     }
 }

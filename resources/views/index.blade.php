@@ -503,7 +503,7 @@
             </div><!-- End Section Title -->
             <div class="container">
                 <div class="row gy-4" id="nurse-container"
-                    style="height: 638px; scroll-behavior: smooth; overflow: scroll;">
+                    style="height: 638px; scroll-behavior: smooth; overflow: scroll; overflow-x: hidden">
                 </div>
             </div>
 

@@ -39,7 +39,7 @@
         </form>
         <div class="doctors section">
             <div class="container">
-                <div class="row gy-4 d-flex flex-wrap">
+                <div class="row gy-4 d-flex flex-wrap" style="height: 638px; scroll-behavior: smooth; overflow: scroll; overflow-x: hidden">
                     @foreach ($filterNurses as $nurse)
                         <div class="col-lg-6 mb-4"> <!-- This ensures two cards per row on large screens -->
                             <form action="{{ url('/info/nurse') }}" method="get" enctype="multipart/form-data" role="form">

@@ -38,7 +38,8 @@ Route::post('/success-booking', [UserViewController::class, 'createPatientInfo']
 
 //payment
 Route::post('/payment',[App\Http\Controllers\UserPaymentController::class, 'getQR']); 
-Route::post('/success-payment',[App\Http\Controllers\UserPaymentController::class, 'completePayment']); 
+Route::post('/success-payment',[App\Http\Controllers\UserPaymentController::class, 'completePayment']);
+
 
 //Township
 Route::get('/admin/township/list', [App\Http\Controllers\TownshipController::class, 'listTownship'])->middleware('auth');
