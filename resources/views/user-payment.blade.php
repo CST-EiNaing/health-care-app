@@ -69,8 +69,8 @@
 
                     <!-- Remarks -->
                     <div class="d-flex align-items-center mt-4">
-                        <label for="remark" class="form-label me-2" style="width: 250px"><strong>Remark:</strong></label>
-                        <input type="text" name="remark" id="remark" class="form-control" placeholder="Remark">
+                        <label for="remark" class="form-label me-2" style="width: 250px"><strong>Transition Number:</strong></label>
+                        <input type="text" name="remark" id="remark" class="form-control">
                     </div>
                 </div>
 
@@ -91,6 +91,7 @@
         const qrPhotoImg = document.getElementById('qr-photo');
         const accountNumberSpan = document.getElementById('account-number');
         const paymentDetailsRow = document.getElementById('payment-details');
+        const remarkInput = document.getElementById('remark');
 
         paymentSelect.addEventListener('change', function() {
             const selectedOption = paymentSelect.options[paymentSelect.selectedIndex];
@@ -102,6 +103,7 @@
                 paymentDetailsRow.style.display = 'block';
                 qrPhotoImg.src = `{{ asset('images/payment_method/images.png') }}`;
                 accountNumberSpan.textContent = 'No Account Number';
+                remarkInput.removeAttribute('required');
             } else {
                 paymentDetailsRow.style.display = 'block';
                 qrPhotoImg.src = qrPhoto ? `{{ asset('images/payment_method/') }}/${qrPhoto}` :
@@ -109,6 +111,7 @@
                 accountNumberSpan.textContent = accountNumber || 'No Account Number';
                 qrPhotoContainer.style.display = qrPhoto ? 'block' : 'none';
                 accountNumberContainer.style.display = accountNumber ? 'block' : 'none';
+                remarkInput.setAttribute('required', 'required');
             }
         });
 
