@@ -87,7 +87,7 @@
                                     </td>
                                     <td>
                                         <input type="number" name="service_fee" value="{{ $booking->service_fee }}"
-                                            class="form-control">
+                                            class="form-control" readonly>
                                     </td>
                                 </tr>
                                 <tr>
