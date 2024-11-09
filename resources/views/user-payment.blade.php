@@ -56,35 +56,64 @@
                             <input type="text" name="amount" value="{{ $total }}" class="form-control" readonly>
                         </div>
 
-                        <div class="d-flex align-items-center mt-4">
-                            <label class="form-label me-2" style="width: 250px"><strong>Remark:</strong></label>
-                            <input type="text" name="remark" class="form-control" placeholder="Remark">
-                        </div>
+                    <!-- Total Amount -->
+                    <div class="d-flex align-items-center mt-4">
+                        <label for="total" class="form-label me-2" style="width: 250px"><strong>Total Amount:</strong></label>
+                        <input type="text" name="amount" id="total" value="{{ $total }}" class="form-control" readonly>
+                    </div>
+
+                    <!-- Amount to Pay -->
+                    {{-- <div class="d-flex align-items-center mt-4">
+                        <label for="amount" class="form-label me-2" style="width: 250px"><strong>Amount To Pay: <span style="color: red">*</span></strong></label>
+                        <input type="text" name="amount" class="form-control" id="amount" required>
+                    </div> --}}
+
+                    <!-- Remarks -->
+                    <div class="d-flex align-items-center mt-4">
+                        <label for="remark" class="form-label me-2" style="width: 250px"><strong>Transition Number:</strong></label>
+                        <input type="text" name="remark" id="remark" class="form-control">
                     </div>
                 </div>
 
-                <div class="mt-4 text-center"><button type="submit" class="btn btn-primary">Confirm Payment</button></div>
-            </form>
-        </div>
-    </section>
+            </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const paymentSelect = document.getElementById('payment-method-select');
-            const qrPhoto = document.getElementById('qr-photo');
-            const accountNumber = document.getElementById('account-number');
-            const paymentDetails = document.getElementById('payment-details');
+            <div class="mt-4">
+                <div class="text-center"><button type="submit" class="btn btn-primary">Confirm Payment</button></div>
+            </div>
+        </form>
+    </div>
 
-            paymentSelect.addEventListener('change', function() {
-                const selectedOption = paymentSelect.options[paymentSelect.selectedIndex];
-                const qrUrl = selectedOption.getAttribute('data-qr');
-                const account = selectedOption.getAttribute('data-account');
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const paymentSelect = document.getElementById('payment-method-select');
+        const qrPhotoContainer = document.getElementById('qr-photo-container');
+        const accountNumberContainer = document.getElementById('account-number-container');
+        const qrPhotoImg = document.getElementById('qr-photo');
+        const accountNumberSpan = document.getElementById('account-number');
+        const paymentDetailsRow = document.getElementById('payment-details');
+        const remarkInput = document.getElementById('remark');
 
-                qrPhoto.src = qrUrl;
-                accountNumber.textContent = account || 'No Account Number';
-                paymentDetails.style.display = 'block';
-            });
-            paymentSelect.dispatchEvent(new Event('change'));
+        paymentSelect.addEventListener('change', function() {
+            const selectedOption = paymentSelect.options[paymentSelect.selectedIndex];
+            const paymentName = selectedOption.getAttribute('data-name');
+            const qrPhoto = selectedOption.getAttribute('data-qr_photo');
+            const accountNumber = selectedOption.getAttribute('data-account_number');
+
+            if (paymentName === 'Cash') {
+                paymentDetailsRow.style.display = 'block';
+                qrPhotoImg.src = `{{ asset('images/payment_method/images.png') }}`;
+                accountNumberSpan.textContent = 'No Account Number';
+                remarkInput.removeAttribute('required');
+            } else {
+                paymentDetailsRow.style.display = 'block';
+                qrPhotoImg.src = qrPhoto ? `{{ asset('images/payment_method/') }}/${qrPhoto}` :
+                    `{{ asset('images/payment_method/images.png') }}`;
+                accountNumberSpan.textContent = accountNumber || 'No Account Number';
+                qrPhotoContainer.style.display = qrPhoto ? 'block' : 'none';
+                accountNumberContainer.style.display = accountNumber ? 'block' : 'none';
+                remarkInput.setAttribute('required', 'required');
+            }
         });
     </script>
 @endsection
