@@ -14,7 +14,7 @@
             @endif
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header" style="">
+                    <div class="card-header" style="font-weight:bold;">
                         Edit Payment Method
                     </div>
                     <div class="card-body">
@@ -34,7 +34,8 @@
                                 <tr>
                                     <td><label class="form-control">OldPhoto:</label></td>
                                     <td>
-                                        <img width="50px" height="50px" src="{{ asset("images/payment_method/$method->qr_photo") }}">
+                                        <img width="50px" height="50px"
+                                            src="{{ asset("images/payment_method/$method->qr_photo") }}">
                                     </td>
                                 </tr>
                                 <tr>
