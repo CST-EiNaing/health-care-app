@@ -64,7 +64,7 @@ class BookingController extends Controller
             $days = Carbon::parse($booking->from_date)->diffInDays(Carbon::parse($booking->to_date)) + 1;
             $booking->nurse_fee = $days * $ndp->fee;
             $booking->nurse_profit = $ndp->fee;
-            // dd($days);
+            dd($days);
         } elseif ($ndp->duty_id == 2) {
             // Monthly Rate Calculation
             $months = Carbon::parse($booking->from_date)->diffInMonths(Carbon::parse($booking->to_date));
