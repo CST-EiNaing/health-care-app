@@ -50,7 +50,7 @@
                         <!-- NDP -->
                         <div class="col-md-6">
                             <label class="form-label"><strong>Rent Type:</strong></label>
-                            <input type="text" name="patient_id" value="{{ $booking->ndp->description }}"
+                            <input type="text" name="patient_id" value="{{$booking->ndp->nurse->name}} - {{ $booking->ndp->description }}"
                                 class="form-control" readonly>
                         </div>
                         <!-- Service Fee -->

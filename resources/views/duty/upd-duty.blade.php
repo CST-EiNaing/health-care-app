@@ -14,7 +14,7 @@
             @endif
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header" style="">
+                    <div class="card-header" style="font-weight:bold;">
                         Edit Duty
                     </div>
                     <div class="card-body">
