@@ -1,60 +1,59 @@
 @extends('master')
 
 @section('content')
-    <section id="appointment" class="appointment section">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Filling Payment Info</h2>
-            <h4>ကျေးဇူးပြု၍ ငွေပေးချေလိုသည့် ပုံစံအား ရွေးချယ်ပေးပါ။</h4>
-        </div>
+<section id="appointment" class="appointment section">
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-            <form action="{{ url('/success-payment') }}" method="post" enctype="multipart/form-data" role="form">
-                @csrf
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div class="col-md-8 form-group mt-3 pe-2">
-                        <h4 class="text-center mb-5">Payment</h4>
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Filling Payment Info</h2>
+        <h4>ကျေးဇူးပြု၍ ငွေပေးချေလိုသည့် ပုံစံအား ရွေးချယ်ပေးပါ။</h4>
+    </div><!-- End Section Title -->
 
-                        <div class="d-flex align-items-center">
-                            <label class="form-label me-2" style="width: 250px"><strong>Booking ID:</strong></label>
-                            <input type="text" name="booking_id" value="{{ $booking_id }}" class="form-control"
-                                readonly>
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <form action="{{ url('/success-payment') }}" method="post" enctype="multipart/form-data" role="form">
+            @csrf
+            <div class="row d-flex justify-content-center align-items-center">
+
+                <div class="col-md-8 form-group mt-3 pe-2">
+                    <h4 class=" text-center mb-5">Payment</h4>
+                    
+                    <!-- Booking ID -->
+                    <div class="d-flex align-items-center">
+                        <label for="booking_id" class="form-label me-2" style="width: 250px"><strong>Booking ID:</strong></label>
+                        <input type="text" id="booking_id" name="booking_id" value="{{ $booking_id }}" class="form-control" readonly>
+                    </div>
+
+                    <!-- Owner's Name -->
+                    <div class="d-flex align-items-center mt-4">
+                        <label for="owner_name" class="form-label me-2" style="width: 250px"><strong>Owner's Name:</strong></label>
+                        <input type="text" name="owner_name" id="owner_name" value="{{$owner_name}}" class="form-control" readonly>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="d-flex align-items-center mt-4">
+                        <label for="payment-method-select" class="form-label me-2" style="width: 250px"><strong>Payment Method:</strong></label>
+                        <select id="payment-method-select" name="payment_method_id" class="form-control" required>
+                            @foreach ($payment_methods as $payment_method)
+                                <option value="{{ $payment_method->id }}" data-name="{{ $payment_method->name }}"
+                                        data-qr_photo="{{ $payment_method->qr_photo }}"
+                                        data-account_number="{{ $payment_method->account_number }}">
+                                    {{ $payment_method->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div id="payment-details" class="payment-details" style="display: none;">
+                        <div class="d-flex align-items-center mt-4" id="qr-photo-container">
+                            <label for="qr-photo" class="form-label me-2" style="width: 250px"><strong>QR Code:</strong></label>
+                            <img id="qr-photo" src="" alt="QR Photo" width="300px" height="350px">
                         </div>
 
-                        <div class="d-flex align-items-center mt-4">
-                            <label class="form-label me-2" style="width: 250px"><strong>Owner's Name:</strong></label>
-                            <input type="text" name="owner_name" value="{{ $owner_name }}" class="form-control"
-                                readonly>
+                        <div class="d-flex align-items-center mt-4" id="account-number-container">
+                            <label for="account-number" class="form-label me-2" style="width: 250px"><strong>Account Number:</strong></label>
+                            <label class="form-control"><span id="account-number"></span></label>
                         </div>
-
-                        <div class="d-flex align-items-center mt-4">
-                            <label class="form-label me-2" style="width: 250px"><strong>Payment Method:</strong></label>
-                            <select id="payment-method-select" name="payment_method_id" class="form-control" required>
-                                @foreach ($payment_methods as $payment_method)
-                                    <option value="{{ $payment_method->id }}"
-                                        data-qr="{{ $payment_method->qr_photo ? asset('images/payment_method/' . $payment_method->qr_photo) : asset('images/payment_method/images.png') }}"
-                                        data-account="{{ $payment_method->account_number }}">
-                                        {{ $payment_method->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div id="payment-details" style="display: none;">
-                            <div class="d-flex align-items-center mt-4" id="qr-photo-container">
-                                <label class="form-label me-2" style="width: 250px"><strong>QR Code:</strong></label>
-                                <img id="qr-photo" src="" alt="QR Photo" width="300" height="350">
-                            </div>
-
-                            <div class="d-flex align-items-center mt-4" id="account-number-container">
-                                <label class="form-label me-2" style="width: 250px"><strong>Account Number:</strong></label>
-                                <label class="form-control" id="account-number"></label>
-                            </div>
-                        </div>
-
-                        <div class="d-flex align-items-center mt-4">
-                            <label class="form-label me-2" style="width: 250px"><strong>Total Amount:</strong></label>
-                            <input type="text" name="amount" value="{{ $total }}" class="form-control" readonly>
-                        </div>
+                    </div>
 
                     <!-- Total Amount -->
                     <div class="d-flex align-items-center mt-4">
@@ -115,5 +114,8 @@
                 remarkInput.setAttribute('required', 'required');
             }
         });
-    </script>
+
+        paymentSelect.dispatchEvent(new Event('change'));
+    });
+</script>
 @endsection
