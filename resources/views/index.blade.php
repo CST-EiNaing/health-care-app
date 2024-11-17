@@ -631,12 +631,12 @@
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2 mb-2">
                                 <i class="fa fa-phone"></i>
-                                <span>+1 5589 55488 55</span>
+                                <span>09-666973131</span>
                             </a>
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2">
                                 <i class="fa fa-envelope"></i>
-                                <span>yangon@example.com</span>
+                                <span>zabuhein@example.com</span>
                             </a>
                         </div>
                     </div><!-- End Location Column -->
@@ -656,12 +656,12 @@
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2 mb-2">
                                 <i class="fa fa-phone"></i>
-                                <span>+1 5589 55488 55</span>
+                                <span>09-666973131</span>
                             </a>
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2">
                                 <i class="fa fa-envelope"></i>
-                                <span>yangon@example.com</span>
+                                <span>zabuhein@example.com</span>
                             </a>
                         </div>
                     </div><!-- End Call Us Column -->
@@ -681,12 +681,12 @@
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2 mb-2">
                                 <i class="fa fa-phone"></i>
-                                <span>+1 5589 55488 55</span>
+                                <span>09-666973131</span>
                             </a>
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2">
                                 <i class="fa fa-envelope"></i>
-                                <span>yangon@example.com</span>
+                                <span>zabuhein@example.com</span>
                             </a>
                         </div>
                     </div><!-- End Email Us Column -->

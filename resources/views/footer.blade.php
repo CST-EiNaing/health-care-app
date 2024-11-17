@@ -8,9 +8,11 @@
                 </a>
                 <div class="footer-contact pt-3">
                     <p>Yangon</p>
-                    <p>Hlaing Township</p>
-                    <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                    <p><strong>Email:</strong> <span>classicsoftware@example.com</span></p>
+                    <p>No.1086 ၊ သုမန (1) လမ်း ၊ 16/4 ရပ်ကွက်
+                    </p>
+                    <p>သင်္ဃန်းကျွန်းမြို့နယ်</p>
+                    <p class="mt-3"><strong>Phone:</strong> <span>09-666973131</span></p>
+                    <p><strong>Email:</strong> <span>zabuhein@example.com</span></p>
                 </div>
                 <div class="social-links d-flex mt-4">
                     <a href=""><i class="bi bi-whatsapp"></i></a>
@@ -19,15 +21,14 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 footer-about">
-                <a href="index.html" class="logo d-flex align-items-center">
-                    <span class="sitename">Za Bu Hein</span>
-                </a>
+            <div class="col-lg-4 col-md-6 footer-about"> 
                 <div class="footer-contact pt-3">
-                    <p>Mandalay</p>
-                    <p>Hlaing Township</p>
-                    <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                    <p><strong>Email:</strong> <span>classicsoftware@example.com</span></p>
+                    <p>Yangon</p>
+                    <p>No.1086 ၊ သုမန (1) လမ်း ၊ 16/4 ရပ်ကွက်
+                    </p>
+                    <p>သင်္ဃန်းကျွန်းမြို့နယ်</p>
+                    <p class="mt-3"><strong>Phone:</strong> <span>09-666973131</span></p>
+                    <p><strong>Email:</strong> <span>zabuhein@example.com</span></p>
                 </div>
             </div>
 
