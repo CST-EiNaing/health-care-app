@@ -84,7 +84,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label class="form-control">Remark</label>
+                                        <label class="form-control">Transaction No</label>
                                     </td>
                                     <td>
                                         <input type="text" name="remark" class="form-control">
@@ -113,6 +113,7 @@
                                 <td>Booking ID</td>
                                 <td>MethodName</td>
                                 <td>Amount</td>
+                                <td>Transaction No</td>
                                 <td>Delete</td>
                             </tr>
                             @foreach ($payments as $payment)
@@ -121,6 +122,7 @@
                                     <td>{{ $payment->booking_id }}</td>
                                     <td>{{ $payment->paymentMethod->name }}</td>
                                     <td>{{ $payment->amount }}</td>
+                                    <td>{{ $payment->remark }}</td>
                                     <td>
                                         <a href="{{ url("/admin/payment/del/{$payment->id}")}}" class="btn btn-danger btn-sm"> Delete</a>
                                     </td>

@@ -28,7 +28,12 @@
     <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="{{ asset('../assets/css/main.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('../assets/css/main.css') }}" rel="stylesheet">
+     --}}
+     <link href="{{ asset('../assets/css/main.css') }}?v={{ time() }}" rel="stylesheet">
+
+    {{-- <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet"> --}}
+
 </head>
 
 <body class="index-page">
@@ -38,8 +43,8 @@
             <div class="container d-flex justify-content-center justify-content-md-between">
                 <div class="contact-info d-flex align-items-center">
                     <i class="bi bi-envelope d-flex align-items-center"><a
-                            href="mailto:contact@example.com">classicsoftware@example.com</a></i>
-                    <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+                            href="mailto:contact@example.com">zabuhein@example.com</a></i>
+                    <i class="bi bi-phone d-flex align-items-center ms-4"><span>09-666973131</span></i>
                 </div>
                 <div class="social-links d-none d-md-flex align-items-center">
                     <a href=""><i class="bi bi-whatsapp"></i></a>
@@ -502,7 +507,7 @@
                 </div>
             </div><!-- End Section Title -->
             <div class="container">
-                <div class="row gy-4" id="nurse-container"
+                <div class="row gy-4 align-items-stretch" id="nurse-container"
                     style="height: 638px; scroll-behavior: smooth; overflow: scroll; overflow-x: hidden">
                 </div>
             </div>
@@ -626,12 +631,12 @@
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2 mb-2">
                                 <i class="fa fa-phone"></i>
-                                <span>+1 5589 55488 55</span>
+                                <span>09-666973131</span>
                             </a>
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2">
                                 <i class="fa fa-envelope"></i>
-                                <span>yangon@example.com</span>
+                                <span>zabuhein@example.com</span>
                             </a>
                         </div>
                     </div><!-- End Location Column -->
@@ -651,12 +656,12 @@
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2 mb-2">
                                 <i class="fa fa-phone"></i>
-                                <span>+1 5589 55488 55</span>
+                                <span>09-666973131</span>
                             </a>
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2">
                                 <i class="fa fa-envelope"></i>
-                                <span>yangon@example.com</span>
+                                <span>zabuhein@example.com</span>
                             </a>
                         </div>
                     </div><!-- End Call Us Column -->
@@ -676,12 +681,12 @@
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2 mb-2">
                                 <i class="fa fa-phone"></i>
-                                <span>+1 5589 55488 55</span>
+                                <span>09-666973131</span>
                             </a>
                             <a href="#" style="text-decoration: none; color:#444444;"
                                 class=" d-flex align-items-center gap-2">
                                 <i class="fa fa-envelope"></i>
-                                <span>yangon@example.com</span>
+                                <span>zabuhein@example.com</span>
                             </a>
                         </div>
                     </div><!-- End Email Us Column -->
@@ -737,13 +742,13 @@
 
             // HTML structure for nurse card
             nurseCard.innerHTML = `
-           <div class="team-member" style="height: 300px;">
-               <div class=" d-flex align-items-start mb-2">
-                   <div class="pic">
+           <div class="team-member">
+               <div class="flex-column flex-md-row d-flex align-items-start mb-2">
+                   <div class="pic" style=" margin: 0 auto;">
                        <img src="${nurseImage}" alt="${nurse.name}" class="img-fluid">
                    </div>
-                   <div class="member-info">
-                       <h4>${nurse.name}</h4>
+                   <div class="member-info mt-sm-3 mt-md-0"  style=" margin: 0 auto;">
+                       <h4 class="text-center text-md-start">${nurse.name}</h4>
                        <span></span>
    
                        <div class="info-pair d-flex align-items-center gap-3 mb-2">

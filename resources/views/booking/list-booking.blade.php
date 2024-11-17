@@ -57,7 +57,7 @@
                                             @foreach ($ndps as $ndp)
                                                 <option value="{{ $ndp->id }}" data-duty-id="{{ $ndp->duty_id }}"
                                                     data-fee="{{ $ndp->fee }}">
-                                                   {{$ndp->nurse->name}} - {{ $ndp->description }}
+                                                    {{ $ndp->nurse->name }} - {{ $ndp->description }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -67,19 +67,22 @@
                                 <!-- From Date -->
                                 <tr>
                                     <td><label class="form-control">From Date</label></td>
-                                    <td><input required type="date" id="from_date" name="from_date" class="form-control"></td>
+                                    <td><input required type="date" id="from_date" name="from_date" class="form-control">
+                                    </td>
                                 </tr>
 
                                 <!-- To Date -->
                                 <tr>
                                     <td><label class="form-control">To Date</label></td>
-                                    <td><input required type="date" id="to_date" name="to_date" class="form-control"></td>
+                                    <td><input required type="date" id="to_date" name="to_date" class="form-control">
+                                    </td>
                                 </tr>
 
                                 <!-- Service Fee -->
                                 <tr>
                                     <td><label class="form-control">Service Fee</label></td>
-                                    <td><input required type="number" id="service_fee" name="service_fee" class="form-control" readonly></td>
+                                    <td><input required type="number" id="service_fee" name="service_fee"
+                                            class="form-control" readonly></td>
                                 </tr>
 
                                 <!-- Nurse Fee (auto-calculated) -->
@@ -136,8 +139,8 @@
                                 <td>Service Fee</td>
                                 <td>Nurse Fee</td>
                                 <td>Total</td>
-                                {{-- <td>Nurse profit</td>
-                                <td>Total income</td> --}}
+                                <td>Nurse profit</td>
+                                <td>Total income</td>
                                 <td>Delete</td>
                                 <td>Update</td>
                             </tr>
@@ -146,21 +149,29 @@
                                     <td>{{ $booking->id }}</td>
                                     <td>{{ $booking->owner->name }}</td>
                                     <td>{{ $booking->patient->name }}</td>
-                                    <td> {{$booking->ndp->nurse->name}}<br>
+                                    <td> {{ $booking->ndp->nurse->name }}<br>
                                         {{ $booking->ndp->description }}</td>
-                                    <td>{{ $booking->from_date}}</td>
+                                    <td>{{ $booking->from_date }}</td>
                                     <td>{{ $booking->to_date }}</td>
                                     <td>{{ $booking->service_fee }}</td>
                                     <td>{{ $booking->nurse_fee }}</td>
                                     <td>{{ $booking->total }}</td>
-                                    {{-- <td>{{ $booking->nurse_profit }}</td>
-                                    <td>{{ $booking->total_income }}</td> --}}
+                                    <td>{{ $booking->nurse_profit }}</td>
+                                    <td>{{ $booking->total_income }}</td>
                                     <td><a href="{{ url("/admin/booking/del/{$booking->id}") }}"
                                             class="btn btn-danger btn-sm">Delete</a></td>
                                     <td><a href="{{ url("/admin/booking/upd/{$booking->id}") }}"
                                             class="btn btn-warning btn-sm">Update</a></td>
                                 </tr>
                             @endforeach
+                            <tr>
+                                <td colspan="7" class="text-end"><strong>Totals:</strong></td>
+                                <td><strong>{{ $totalNurseFee }}</strong></td>
+                                <td><strong>{{ $totalAmount }}</strong></td>
+                                <td><strong>{{ $totalNurseProfit }}</strong></td>
+                                <td><strong>{{ $totalIncome }}</strong></td>
+                                <td colspan="2"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>
@@ -168,8 +179,8 @@
         </div>
     </div>
     <script>
-        $(document).ready(function () {
-            $('#booking-form').on('input', function () {
+        $(document).ready(function() {
+            $('#booking-form').on('input', function() {
                 const fromDate = $('#from_date').val();
                 const toDate = $('#to_date').val();
                 const ndp = $('#ndp_id option:selected');
@@ -186,7 +197,8 @@
                         const days = (end - start) / (1000 * 60 * 60 * 24) + 1;
                         nurseFee = days * fee;
                     } else if (dutyId == 2) { // Monthly Rate
-                        const months = (end.getMonth() - start.getMonth() + (12 * (end.getFullYear() - start.getFullYear())));
+                        const months = (end.getMonth() - start.getMonth() + (12 * (end.getFullYear() - start
+                            .getFullYear())));
                         nurseFee = months * fee;
                     }
                     // Updated nurse_profit logic based on dutyId
