@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-            'name' => 'Myo Htet',
-            'email' => 'myo@example.com',
-            "password" => Hash::make("asdffdsa"),
+            'name' => 'Za Bu Hein',
+            'email' => 'zinphyuthent@gmail.com',
+            "password" => Hash::make("zbh1992"),
         ]);
 
         //Township
@@ -39,32 +39,32 @@ class DatabaseSeeder extends Seeder
         //Township
 
         //Duty
-        \App\Models\Duty::factory()->daily()->create();
-        \App\Models\Duty::factory()->vip()->create();
-        //
+        // \App\Models\Duty::factory()->daily()->create();
+        // \App\Models\Duty::factory()->vip()->create();
+        // //
 
-        //Positon
-        \App\Models\Position::factory()->hca()->create();
-        \App\Models\Position::factory()->amw()->create();
-        \App\Models\Position::factory()->cgv()->create();
-        \App\Models\Position::factory()->spl()->create(); 
+        // //Positon
+        // \App\Models\Position::factory()->hca()->create();
+        // \App\Models\Position::factory()->amw()->create();
+        // \App\Models\Position::factory()->cgv()->create();
+        // \App\Models\Position::factory()->spl()->create(); 
 
-        //Owner
-        Owner::factory()->count(3)->create();
+        // //Owner
+        // Owner::factory()->count(3)->create();
 
-        //Patient
-        Patient::factory()->count(4)->create();
+        // //Patient
+        // Patient::factory()->count(4)->create();
 
-        // Nurse
-        Nurse::factory()->count(7)->create();
+        // // Nurse
+        // Nurse::factory()->count(7)->create();
 
-        // NDP
-        Ndp::factory()->count(56)->create();
+        // // NDP
+        // Ndp::factory()->count(56)->create();
 
-        //Payment Method
-        $this->call(PaymentMethodSeeder::class);
+        // //Payment Method
+        // $this->call(PaymentMethodSeeder::class);
 
-        // Booking
-        $this->call(BookingSeeder::class);
+        // // Booking
+        // $this->call(BookingSeeder::class);
     }
 }
