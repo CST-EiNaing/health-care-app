@@ -39,7 +39,7 @@
         </form>
         <div class="doctors section">
             <div class="container">
-                <div class="row gy-4 d-flex flex-wrap" style="height: 638px; scroll-behavior: smooth; overflow: scroll; overflow-x: hidden">
+                <div class="row gy-4 d-flex flex-wrap align-items-stretch" style="height: 638px; scroll-behavior: smooth; overflow: scroll; overflow-x: hidden">
                     @foreach ($filterNurses as $nurse)
                         <div class="col-lg-6 mb-4"> <!-- This ensures two cards per row on large screens -->
                             <form action="{{ url('/info/nurse') }}" method="get" enctype="multipart/form-data" role="form">
@@ -50,8 +50,8 @@
                                 <input type="hidden" name="end_date" value="{{ $end_date }}">
                                 <input type="hidden" name="nurse_id" value="{{ $nurse['id'] }}">
             
-                                <div class="team-member" style="height:350px;">
-                                    <div class="d-flex align-items-start mb-2">
+                                <div class="team-member team-members">
+                                    <div class="flex-column flex-md-row d-flex align-items-center justify-content-center mb-2">
                                         <div class="pic">
                                             @php
                                                 $nurseImage = isset($nurse['photo']) 
@@ -61,7 +61,7 @@
                                             <img src="{{ $nurseImage }}" alt="{{ $nurse['name'] ?? 'Nurse' }}" class="img-fluid">
                                         </div>
                                         <div class="member-info">
-                                            <h4 class=" mb-1">{{ $nurse['name'] ?? 'Not provided' }}</h4>
+                                            <h4 class=" mb-1 mt-sm-3 mt-md-0 ">{{ $nurse['name'] ?? 'Not provided' }}</h4>
                                             <span>NurseID: {{ $nurse['member_code'] }}</span>
                                             <div class="info-pair align-items-center gap-3 mb-2">
                                                 <p><strong>Township: </strong>{{ $nurse['township_name'] ?? 'Not provided' }}</p>
@@ -69,9 +69,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="experience mb-3">
+                                    <div class="experience text-center mb-3">
                                         <p style="color: red; display: inline">*</p>လုပ်ငန်း အတွေ့အကြုံ 
-                                        <strong>{{ $nurse['remark'] }}</strong> နှင့် အထက် ရှိသူ ဖြစ်သည်။
+                                        &nbsp;<strong>{{ $nurse['remark'] }} နှစ်</strong>&nbsp;နှင့် အထက် ရှိသူ ဖြစ်သည်။
                                         <p style="color: red; display: inline">*</p>
                                     </div>
                                     <select class="form-select mb-2" name="ndp_id" id="ndp_id" required>

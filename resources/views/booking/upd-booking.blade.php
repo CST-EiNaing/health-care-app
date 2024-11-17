@@ -57,7 +57,7 @@
                                             @foreach ($ndps as $ndp)
                                                 <option value="{{ $ndp->id }}"
                                                     @if ($ndp->id == $booking->ndp_id) selected @endif>
-                                                    {{ $ndp->description }}
+                                                    {{$ndp->nurse->name}} - {{ $ndp->description }}
                                                 </option>
                                             @endforeach;
                                         </select>
@@ -87,7 +87,7 @@
                                     </td>
                                     <td>
                                         <input type="number" name="service_fee" value="{{ $booking->service_fee }}"
-                                            class="form-control" readonly>
+                                            class="form-control">
                                     </td>
                                 </tr>
                                 <tr>

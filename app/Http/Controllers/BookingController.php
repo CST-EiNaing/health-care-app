@@ -20,12 +20,21 @@ class BookingController extends Controller
         $bookings = Booking::all();
         $duties = Duty::all();
 
+        $totalNurseFee = $bookings->sum('nurse_fee');
+        $totalAmount = $bookings->sum('total');
+        $totalNurseProfit = $bookings->sum('nurse_profit');
+        $totalIncome = $bookings->sum('total_income');
+
         return view('booking.list-booking', [
             'owners' => $owners,
             'patients' => $patients,
             'ndps' => $ndps,
             'bookings' => $bookings,
-            'duties' => $duties
+            'duties' => $duties,
+            'totalNurseFee' => $totalNurseFee,
+            'totalAmount' => $totalAmount,
+            'totalNurseProfit' => $totalNurseProfit,
+            'totalIncome' => $totalIncome
         ]);
     }
 
@@ -63,8 +72,7 @@ class BookingController extends Controller
             // Daily Rate Calculation
             $days = Carbon::parse($booking->from_date)->diffInDays(Carbon::parse($booking->to_date)) + 1;
             $booking->nurse_fee = $days * $ndp->fee;
-            $booking->nurse_profit = $ndp->fee;
-            dd($days);
+            $booking->nurse_profit = $ndp->fee; 
         } elseif ($ndp->duty_id == 2) {
             // Monthly Rate Calculation
             $months = Carbon::parse($booking->from_date)->diffInMonths(Carbon::parse($booking->to_date));
@@ -78,8 +86,7 @@ class BookingController extends Controller
 
         // dd($booking);
 
-        $booking->save();
-
+        $booking->save(); 
 
         return back()->with('info_success', 'New Booking added Successfully!');
     }
