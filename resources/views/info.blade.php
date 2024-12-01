@@ -43,13 +43,13 @@
                             <label for="owner_name" class="form-label me-2" style="width: 150px"><strong>Name
                                     :</strong></label>
                             <input type="text" id="owner_name" name="owner_name" class="form-control"
-                                placeholder="Owner's Name" value="myohtet" required>
+                                placeholder="Owner's Name" value="" required>
                         </div>
                         <div class="d-flex align-items-center mt-4">
                             <label for="owner_nrc" class="form-label me-2" style="width: 150px"><strong>NRC
                                     :</strong></label>
                             <input type="text" name="owner_nrc" id="owner_nrc" class="form-control"
-                                placeholder="NRC's Name" value="8/khamana(N)244566" required>
+                                placeholder="NRC's Name" value="" required>
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
@@ -57,7 +57,7 @@
                                     Name
                                     :</strong></label>
                             <input type="text" name="owner_father_name" id="owner_father_name" class="form-control"
-                                placeholder="Father's Name" value="jon" required>
+                                placeholder="Father's Name" value="" required>
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
@@ -65,13 +65,13 @@
                                     Relative
                                     :</strong></label>
                             <input type="text" name="patient_relative" id="patient_relative" class="form-control"
-                                placeholder="Patient's Relative" value="bro" required>
+                                placeholder="Patient's Relative" value="" required>
                         </div>
 
                         <div class="d-flex align-items-center mt-4">
                             <label for="owner_phone" class="form-label me-2" style="width: 150px"><strong>Phone :
                                 </strong></label>
-                            <input type="text" name="owner_phone" value="098765433" class="form-control"
+                            <input type="text" name="owner_phone" value="" class="form-control"
                                 placeholder="09********" id="owner_phone" required>
                         </div>
                         <p id="owner-phone-error" class="text-danger mt-2" style="font-size: 15px; display: none;">
@@ -79,7 +79,7 @@
                         <div class="d-flex align-items-center mt-4">
                             <label for="owner_address" class="form-label me-2" style="width: 150px"><strong>Address :
                                 </strong></label>
-                            <input type="text" name="owner_address" id="owner_address" value="hlaing"
+                            <input type="text" name="owner_address" id="owner_address" value=""
                                 class="form-control" placeholder="Your Addresss" required>
                         </div>
                         <div class="d-flex align-items-center mt-4">
@@ -102,13 +102,13 @@
                             <div class="d-flex align-items-center mt-4">
                                 <label for="patient_name" class="form-label me-2" style="width: 150px"><strong>Name
                                         :</strong></label>
-                                <input type="text" name="patient_name" id="patient_name" value="Boss"
+                                <input type="text" name="patient_name" id="patient_name" value=""
                                     class="form-control" placeholder="Patient's Name" required>
                             </div>
                             <div class="d-flex align-items-center mt-4">
                                 <label for="patient_age" class="form-label me-2" style="width: 150px"><strong>Age
                                         :</strong></label>
-                                <input type="number" name="patient_age" id="patient_age" value="22"
+                                <input type="number" name="patient_age" id="patient_age" value=""
                                     class="form-control" placeholder="Patient's Age" required>
                             </div>
                             <div class="d-flex align-items-center mt-4">
@@ -122,13 +122,13 @@
                             <div class="d-flex align-items-center mt-4">
                                 <label for="diagnotic" class="form-label me-2" style="width: 150px"><strong>Diagnotic
                                         :</strong></label>
-                                <input type="text" name="diagnotic" id="diagnotic" value="unknown"
+                                <input type="text" name="diagnotic" id="diagnotic" value=""
                                     class="form-control" placeholder="diagnotic" required>
                             </div>
                             <div class="d-flex align-items-center mt-4">
                                 <label for="patient_phone" class="form-label me-2" style="width: 150px"><strong>Phone :
                                     </strong></label>
-                                <input type="text" name="patient_phone" class="form-control" value="0987654322"
+                                <input type="text" name="patient_phone" class="form-control" value=""
                                     placeholder="09********" id="patient_phone" required>
                             </div>
 
@@ -140,7 +140,7 @@
                                 <label for="patient_address" class="form-label me-2" style="width: 150px"><strong>Address
                                         :
                                     </strong></label>
-                                <input type="text" name="patient_address" id="patient_address" value="hwoeofd"
+                                <input type="text" name="patient_address" id="patient_address" value=""
                                     class="form-control" placeholder="Your Addresss" required>
                             </div>
                             <div class="d-flex align-items-center mt-4">

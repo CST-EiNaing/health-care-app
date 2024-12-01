@@ -56,12 +56,10 @@
         </div>
     </div>
 
-    <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Za Bu Hein</strong> <span>All Rights
-                Reserved</span></p>
-        <div class="credits">
-
-        </div>
+    <div class="container copyright d-flex justify-content-between mt-4">
+        <div><p>© <span>Copyright</span> <strong class="px-1 sitename">Za Bu Hein</strong> <span>All Rights
+            Reserved</span></p></div>
+        <div class=""><p><i>Developed By</i> <a href="" class=" text-decoration-none">Classic_Software_Team</a>.</p></div>
     </div>
 
 </footer>
