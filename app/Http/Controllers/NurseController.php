@@ -134,7 +134,6 @@ class NurseController extends Controller
                 'weight' => 'required',
                 'academic' => 'required',
                 'certificate' => 'required',
-                'photo' => 'required',
                 'phone' => 'required',
                 'address' => 'required',
                 'member_code' => 'required',

@@ -77,7 +77,7 @@
                                     <select class="form-select mb-2" name="ndp_id" id="ndp_id" required>
                                         <option value="" disabled selected>Select Nurse's Description</option>
                                         @foreach ($nurse['ndp'] as $ndp)
-                                            <option value="{{ $ndp->id }}"> {{ $ndp->description }}</option>
+                                            <option value="{{ $ndp->id }}"> {{ $ndp->description }} - {{ $ndp->fee}} kyats</option>
                                         @endforeach
                                     </select>
                                     <div class="d-flex justify-content-end">
