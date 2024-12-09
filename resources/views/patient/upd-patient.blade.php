@@ -28,7 +28,7 @@
                                 <label class="form-control">Owner's Name</label>
                             </td>
                             <td>
-                                 <input type="text" name="owner_id" class="form-control" value="{{ $patient->owner->name }}" readonly>
+                                 <input type="text" name="owner_id" class="form-control" value="{{ $patient->owner ? $patient->owner->name : 'Unknown' }}" readonly>
                             </td>
                         </tr>
                         <tr>

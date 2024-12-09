@@ -57,7 +57,7 @@
                                             @foreach ($ndps as $ndp)
                                                 <option value="{{ $ndp->id }}" data-duty-id="{{ $ndp->duty_id }}"
                                                     data-fee="{{ $ndp->fee }}">
-                                                    {{ $ndp->nurse->name }} - {{ $ndp->description }}
+                                                    {{ $ndp->nurse ? $ndp->nurse->name : 'Unknown' }} - {{ $ndp->description }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -147,9 +147,9 @@
                             @foreach ($bookings as $booking)
                                 <tr>
                                     <td>{{ $booking->id }}</td>
-                                    <td>{{ $booking->owner->name }}</td>
-                                    <td>{{ $booking->patient->name }}</td>
-                                    <td> {{ $booking->ndp->nurse->name }}<br>
+                                    <td>{{ $booking->owner ? $booking->owner->name : 'Unknown' }}</td>
+                                    <td>{{ $booking->patient ? $booking->patient->name : 'Unknown' }}</td>
+                                    <td> {{ $booking->ndp->nurse ? $booking->ndp->nurse->name : 'Unknown' }}<br>
                                         {{ $booking->ndp->description }}</td>
                                     <td>{{ $booking->from_date }}</td>
                                     <td>{{ $booking->to_date }}</td>

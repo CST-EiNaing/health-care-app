@@ -159,7 +159,7 @@
                             @foreach ($patients as $patient)
                                 <tr>
                                     <td>{{ $patient->id }}</td>
-                                    <td> {{ $patient->owner->name }}</td>
+                                    <td>{{ $patient->owner ? $patient->owner->name : 'Unknown' }}</td>
                                     <td>{{ $patient->township ? $patient->township->name : 'N/A' }}</td>
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->age }}</td>

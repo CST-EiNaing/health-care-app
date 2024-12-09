@@ -70,7 +70,7 @@
                     <!-- Remarks -->
                     <div class="d-flex align-items-center mt-4">
                         <label for="remark" class="form-label me-2" style="width: 250px"><strong>Transition Number:</strong></label>
-                        <input type="text" name="remark" id="remark" class="form-control">
+                        <input type="text" name="remark" id="remark" class="form-control" placeholder="last 6 numbers (******)">
                     </div>
                 </div>
 

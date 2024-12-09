@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         ]);
         //Township
 
-        //Duty
+        // //Duty
         // \App\Models\Duty::factory()->daily()->create();
         // \App\Models\Duty::factory()->vip()->create();
         // //
