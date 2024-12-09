@@ -57,7 +57,7 @@
                                             @foreach ($ndps as $ndp)
                                                 <option value="{{ $ndp->id }}"
                                                     @if ($ndp->id == $booking->ndp_id) selected @endif>
-                                                    {{$ndp->nurse->name}} - {{ $ndp->description }}
+                                                    {{$ndp->nurse ? $ndp->nurse->name : 'Unknown'}} - {{ $ndp->description }}
                                                 </option>
                                             @endforeach;
                                         </select>

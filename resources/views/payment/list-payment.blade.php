@@ -87,7 +87,7 @@
                                         <label class="form-control">Transaction No</label>
                                     </td>
                                     <td>
-                                        <input type="text" name="remark" class="form-control">
+                                        <input type="text" name="remark" class="form-control" placeholder="last 6 numbers (******)">
                                     </td>
                                 </tr>
                                 <tr>

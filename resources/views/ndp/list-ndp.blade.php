@@ -108,9 +108,9 @@
                             @foreach ($ndps as $ndp)
                                 <tr>
                                     <td>{{ $ndp->id }}</td>
-                                    <td>{{ $ndp->nurse->name }}</td>
-                                    <td>{{ $ndp->duty->name }}</td>
-                                    <td>{{ $ndp->position->name }}</td>
+                                    <td>{{ $ndp->nurse ? $ndp->nurse->name : 'Unknown' }}</td>
+                                    <td>{{ $ndp->duty ? $ndp->duty->name : 'Unknown' }}</td>
+                                    <td>{{ $ndp->position ? $ndp->position->name : 'Unknown' }}</td>
                                     <td>{{ $ndp->description }}</td>
                                     <td>{{ $ndp->fee }}</td>
                                     <td>

@@ -220,6 +220,15 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        <label class="form-control">Experience</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="remark" value="{{ $nurse->remark }}"
+                                            class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         <input type="submit" value="Update" class="btn btn-primary btn-sm form-control">
                                     </td>
                                 </tr>

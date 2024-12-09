@@ -195,6 +195,14 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        <label class="form-control">Experience</label>
+                                    </td>
+                                    <td>
+                                        <input required type="number" name="remark" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         <input type="submit" value="Add" class="btn btn-primary btn-sm form-control">
                                     </td>
                                 </tr>
@@ -235,6 +243,7 @@
                                 <td>Mother Name</td>
                                 <td>Parent's Phone</td>
                                 <td>Parent's Address</td>
+                                <td>Experience</td>
                                 <td>Delete</td>
                                 <td>Update</td>
                             </tr>
@@ -263,6 +272,7 @@
                                     <td>{{ $nurse->mother_name }}</td>
                                     <td>{{ $nurse->parent_phone }}</td>
                                     <td>{{ $nurse->parent_address }}</td>
+                                    <td>{{ $nurse->remark }}</td>
 
                                     <td>
                                         <a href="{{ url("/admin/nurse/del/{$nurse->id}") }}"
